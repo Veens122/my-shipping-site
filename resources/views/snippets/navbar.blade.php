@@ -1,22 +1,21 @@
     <nav class="navbar">
         <div class="container">
             <div class="inner">
-                <div class="logo"> <a href="index.html"> <img src="{{ asset('assets/images/logo.png') }}" alt="Image">
+                <div class="logo"> <a href=""> <img src="{{ asset('assets/images/logo.png') }}" alt="Image">
                     </a> </div>
                 <!-- end logo -->
-                <div class="custom-menu">
+                <!-- <div class="custom-menu">
                     <ul>
                         <li><a href="#">En</a></li>
                         <li><a href="#">Ru</a></li>
                     </ul>
-                </div>
+                </div> -->
                 <!-- end custom-menu -->
                 <div class="site-menu">
                     <ul>
-                        <li><a href="logistics.html">Logistics</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="news.html">News</a></li>
-                        <li><a href="about.html">About</a></li>
+                        <li><a href="{{ route('services')}}">Services</a></li>
+                        <li><a href="{{ route('blog')}}">News</a></li>
+                        <li><a href="{{ route('about')}}">About</a></li>
                         <li><a href="{{ route('contact')}}">Contact</a></li>
                     </ul>
                 </div>

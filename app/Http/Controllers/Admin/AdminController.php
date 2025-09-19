@@ -10,7 +10,12 @@ class AdminController extends Controller
     //
     public function __construct()
     {
-        $this->middleware(['auth', 'isAdmin']);
+        $this->middleware(['auth', 'admin'])->except(['index']);
+    }
+
+    public function index()
+    {
+        return view('admin.index');
     }
 
     public function admin_dashboard()

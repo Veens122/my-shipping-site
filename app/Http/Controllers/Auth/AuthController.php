@@ -28,55 +28,12 @@ class AuthController extends Controller
             'name'     => $request->name,
             'email'    => $request->email,
             'password' => bcrypt($request->password),
-            'role'     => 2,
+            'role_id'     => 2,
         ]);
 
         // Auth::login($user);
 
         return redirect()->route('admin.login')
             ->with('success', 'Registration successful. Please wait for your account to be approved by the super admin.');
-    }
-
-
-    public function showLogin()
-    {
-        return view('admin.login');
-    }
-
-    public function login(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|min:5',
-        ]);
-
-        if (Auth::attempt($request->only('email', 'password'))) {
-            $user = Auth::user();
-
-            if ($user->role_id == 1) {
-                return redirect()->route('admin.dashboard');
-            }
-
-            if ($user->role_id == 2 && $user->is_approved) {
-                return redirect()->route('admin.dashboard');
-            }
-
-            Auth::logout();
-            return back()->with('error', 'Your account is not yet approved by the super admin.');
-        }
-
-        return back()->with('error', 'Invalid login details.');
-    }
-
-
-
-
-    public function logout(Request $request)
-    {
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return redirect()->route('admin.login')->with('success', 'You have been successfully logged out');
     }
 }

@@ -23,6 +23,9 @@ class User extends Authenticatable
         'password',
         'role',
         'is_approved',
+        'is_admin',
+        'banned_until',
+        'role_id',
     ];
 
     /**
@@ -43,15 +46,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'banned_until' => 'datetime',
     ];
 
     public function isSuperAdmin()
     {
-        return $this->role === 1;
+        return $this->role_id === 1;
     }
 
     public function isAdmin()
     {
-        return $this->roler === 2;
+        return $this->role_id === 2;
+    }
+
+    public function is_Banned()
+    {
+        return $this->banned_until && $this->banned_until->isFuture();
     }
 }

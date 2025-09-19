@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
+        //
         Schema::table('users', function (Blueprint $table) {
-            //
-            $table->boolean('is_admin')->default(false);
+            $table->timestamp('active_until')->nullable()->after('is_approved');
         });
     }
 
@@ -23,8 +23,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            //
-            $table->dropColumn('is_admin');
+            $table->dropColumn('active_until');
         });
     }
 };
