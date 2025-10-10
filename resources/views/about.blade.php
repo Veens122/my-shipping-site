@@ -200,7 +200,7 @@
             <div class="col-12">
                 <div class="section-title">
                     <figure><img src="{{ asset('assets/images/section-title-shape.png') }}" alt="Image"></figure>
-                    <h2>Qesco UK LLC has grown from <br>
+                    <h2>PaxRuta UK LLC has grown from <br>
                         strength to strength</h2>
                     <p>It means we don’t just come to work to do a job, we come to work to make a difference.</p>
                 </div>
@@ -268,8 +268,8 @@
                     <li>
                         <div class="history-box">
                             <div class="description">
-                                <h6>2012 QESCO UK LTD</h6>
-                                <p>In June 2012 Qesco UK Ltd became
+                                <h6>2012 PaxRuta UK LTD</h6>
+                                <p>In June 2012 PaxRuta UK Ltd became
                                     members of the WCA, the world’s largest and
                                     most powerful network of independent
                                     freight forwarders, </p>

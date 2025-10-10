@@ -7,26 +7,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="theme-color" content="#fed300" />
-    <title>Qesco | Logicstic Shipping Company</title>
+    <title>PaxRuta | Logicstic Shipping Company</title>
     <meta name="author" content="Themezinho">
     <meta name="description" content="For all kind of delivery and shipping company website">
     <meta name="keywords"
         content="logistic, shipping, cargo, delivery, transportation, truck, service, solutions, importing, exporting, trade, product, move, calculate, cost, ecommerce">
 
     <!-- SOCIAL MEDIA META -->
-    <meta property="og:description" content="Qesco | Logicstic Shipping Company">
+    <meta property="og:description" content="Paxruta | Logicstic Shipping Company">
     <meta property="og:image" content="preview.html">
-    <meta property="og:site_name" content="Qesco">
-    <meta property="og:title" content="Qesco">
+    <meta property="og:site_name" content="Paxruta">
+    <meta property="og:title" content="Paxruta">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="http://www.themezinho.net/qesco">
 
     <!-- TWITTER META -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@Qesco">
-    <meta name="twitter:creator" content="@Qesco">
-    <meta name="twitter:title" content="Qesco">
-    <meta name="twitter:description" content="Qesco | Logicstic Shipping Company">
+    <meta name="twitter:site" content="@Paxruta">
+    <meta name="twitter:creator" content="@Paxruta">
+    <meta name="twitter:title" content="Paxruta">
+    <meta name="twitter:description" content="Paxruta | Logicstic Shipping Company">
     <meta name="twitter:image" content="preview.html">
 
     <!-- FAVICON FILES -->
@@ -47,10 +46,19 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+
+
 </head>
 
 <body>
-    <!-- <div class="preloader"> <img src="{{ asset('assets/images/preloader.png') }}" alt="Image"> </div> -->
+    <div class="preloader"> <img src="{{ asset('assets/images/paxruta logo.png') }}" alt="Image"> </div>
     <!-- end preloader -->
     <div class="page-transition"></div>
     <!-- end page-transition -->

@@ -21,7 +21,8 @@ class Shipment extends Model
         'recipient_city',
         'package_type',
         'current_location',
-        'status'
+        'status',
+        'user_id'
     ];
 
     public function updates()

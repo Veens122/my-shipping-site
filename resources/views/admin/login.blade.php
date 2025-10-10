@@ -1,52 +1,610 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
+@section('content')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Login</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
+<style>
+    :root {
+        --primary: #5b6bf0;
+        --primary-dark: #4a57d8;
+        --primary-light: #eef0ff;
+        --secondary: #8b5cf6;
+        --accent: #10b981;
+        --text-dark: #1e293b;
+        --text-light: #64748b;
+        --bg-light: #f8fafc;
+        --bg-white: #ffffff;
+        --border-light: #e2e8f0;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        --radius: 12px;
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
 
-<body class="bg-light">
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-    <div class="container d-flex align-items-center justify-content-center vh-100">
-        <div class="card shadow-lg p-4" style="width: 400px;">
-            <h3 class="text-center mb-4">Admin Login</h3>
+    .general {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        position: relative;
+        overflow: hidden;
+    }
 
-            {{-- Show errors --}}
-            @if(session('error'))
-            <div class="alert alert-danger">{{ session('error') }}</div>
-            @endif
+    /* Animated Background */
+    .background-animation {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
 
-            @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul class="mb-0">
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif
+    .floating-shape {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        animation: float 6s ease-in-out infinite;
+    }
 
-            <form action="{{ route('admin.login.submit') }}" method="POST">
-                @csrf
-                <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" name="email" id="email" value="{{ old('email') }}" class="form-control" required
-                        autofocus>
-                </div>
+    .shape-1 {
+        width: 200px;
+        height: 200px;
+        top: 10%;
+        left: 10%;
+        animation-delay: 0s;
+    }
 
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" name="password" id="password" class="form-control" required>
-                </div>
+    .shape-2 {
+        width: 150px;
+        height: 150px;
+        top: 60%;
+        right: 10%;
+        animation-delay: 2s;
+    }
 
-                <button type="submit" class="btn btn-primary w-100">Login</button>
-            </form>
-        </div>
+    .shape-3 {
+        width: 100px;
+        height: 100px;
+        bottom: 20%;
+        left: 20%;
+        animation-delay: 4s;
+    }
+
+    @keyframes float {
+
+        0%,
+        100% {
+            transform: translateY(0px) rotate(0deg);
+        }
+
+        50% {
+            transform: translateY(-20px) rotate(10deg);
+        }
+    }
+
+    .login-container {
+        margin-top: 80px;
+        width: 100%;
+        max-width: 420px;
+    }
+
+    /* Card Styles */
+    .login-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-lg);
+        overflow: hidden;
+        transition: var(--transition);
+        position: relative;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .login-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+
+    .card-header {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        padding: 40px 30px 30px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .card-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .log-logo {
+        width: 80px;
+        height: 80px;
+        background: white;
+        border-radius: 50%;
+        margin: 0 auto 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: var(--shadow);
+        position: relative;
+        z-index: 2;
+    }
+
+    .log-logo i {
+        font-size: 2rem;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .card-title {
+        color: white;
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 5px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .card-subtitle {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 0.95rem;
+        position: relative;
+        z-index: 2;
+    }
+
+    .card-body {
+        padding: 40px 35px 35px;
+    }
+
+    /* Alert Styles */
+    .alert {
+        border: none;
+        border-radius: 10px;
+        padding: 15px 20px;
+        margin-bottom: 25px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .alert::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+    }
+
+    .alert-danger {
+        background: rgba(239, 68, 68, 0.1);
+        color: #dc2626;
+    }
+
+    .alert-danger::before {
+        background: #ef4444;
+    }
+
+    .alert-danger ul {
+        margin-bottom: 0;
+    }
+
+    .alert-danger li {
+        margin: 3px 0;
+    }
+
+    .alert-icon {
+        margin-right: 10px;
+    }
+
+    /* Form Styles */
+    .form-group {
+        margin-bottom: 25px;
+        position: relative;
+    }
+
+    .form-label {
+        font-weight: 600;
+        color: var(--text-dark);
+        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .form-label i {
+        color: var(--primary);
+        width: 16px;
+    }
+
+    .input-group {
+        position: relative;
+    }
+
+    .form-control {
+        padding: 14px 16px 14px 45px;
+        border: 2px solid var(--border-light);
+        border-radius: 10px;
+        font-size: 0.95rem;
+        transition: var(--transition);
+        background: var(--bg-white);
+        width: 100%;
+    }
+
+    .form-control:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(91, 107, 240, 0.1);
+        outline: none;
+    }
+
+    .input-icon {
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-light);
+        transition: var(--transition);
+        z-index: 3;
+    }
+
+    .form-control:focus+.input-icon {
+        color: var(--primary);
+    }
+
+    .password-toggle {
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-light);
+        cursor: pointer;
+        transition: var(--transition);
+        z-index: 3;
+    }
+
+    .password-toggle:hover {
+        color: var(--primary);
+    }
+
+    /* Button Styles */
+    .btn-login {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        border: none;
+        color: white;
+        padding: 14px 20px;
+        border-radius: 10px;
+        font-weight: 600;
+        transition: var(--transition);
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin: 25px 0 15px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn-login::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s;
+    }
+
+    .btn-login:hover::before {
+        left: 100%;
+    }
+
+    .btn-login:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    /* Forgot Password Link */
+    .forgot-password {
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .forgot-link {
+        color: var(--primary);
+        text-decoration: none;
+        font-size: 0.9rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        transition: var(--transition);
+        position: relative;
+    }
+
+    .forgot-link::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: var(--primary);
+        transition: width 0.3s ease;
+    }
+
+    .forgot-link:hover {
+        color: var(--primary-dark);
+    }
+
+    .forgot-link:hover::after {
+        width: 100%;
+    }
+
+    /* Additional Options */
+    .login-options {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border-light);
+    }
+
+    .remember-me {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.9rem;
+        color: var(--text-light);
+    }
+
+    .register-link {
+        font-size: 0.9rem;
+        color: var(--text-light);
+    }
+
+    .register-link a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 600;
+        transition: var(--transition);
+    }
+
+    .register-link a:hover {
+        color: var(--primary-dark);
+    }
+
+    /* Animation */
+    .login-card {
+        animation: cardEntrance 0.8s ease-out;
+    }
+
+    @keyframes cardEntrance {
+        from {
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    .form-group {
+        opacity: 0;
+        animation: fadeInUp 0.5s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 576px) {
+        .general {
+            padding: 15px;
+        }
+
+        .login-container {
+            max-width: 100%;
+        }
+
+        .card-body {
+            padding: 30px 25px 25px;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+        }
+
+        .login-options {
+            flex-direction: column;
+            gap: 15px;
+            text-align: center;
+        }
+    }
+</style>
+
+<div class="general">
+    <div class="background-animation">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
     </div>
 
-</body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="card-header">
+                <div class="log-logo">
+                    <i class="fas fa-truck"></i>
+                </div>
+                <h2 class="card-title">PaxRuta</h2>
+                <p class="card-subtitle">Admin Portal</p>
+            </div>
 
-</html>
+            <div class="card-body">
+                {{-- Show errors --}}
+                @if(session('error'))
+                <div class="alert alert-danger">
+                    <i class="fas fa-exclamation-circle alert-icon"></i>
+                    {{ session('error') }}
+                </div>
+                @endif
+
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <i class="fas fa-exclamation-triangle alert-icon"></i>
+                    <strong>Please check the following:</strong>
+                    <ul class="mt-2 mb-0">
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+
+                <form action="{{ route('admin.login.submit') }}" method="POST" id="loginForm">
+                    @csrf
+
+                    <div class="form-group">
+                        <label for="email" class="form-label">
+                            <i class="fas fa-envelope"></i> Email Address
+                        </label>
+                        <div class="input-group">
+                            <input type="email" name="email" id="email" value="{{ old('email') }}" class="form-control"
+                                placeholder="Enter your email" required autofocus>
+                            <i class="fas fa-envelope input-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="form-label">
+                            <i class="fas fa-lock"></i> Password
+                        </label>
+                        <div class="input-group">
+                            <input type="password" name="password" id="password" class="form-control"
+                                placeholder="Enter your password" required>
+                            <i class="fas fa-lock input-icon"></i>
+                            <span class="password-toggle" id="togglePassword">
+                                <i class="fas fa-eye"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-login" id="loginBtn">
+                        <i class="fas fa-sign-in-alt"></i> Sign In to Dashboard
+                    </button>
+
+                    <div class="forgot-password">
+                        <a href="{{ route('password.forgot-password') }}" class="forgot-link">
+                            <i class="fas fa-key"></i> Forgot your password?
+                        </a>
+                    </div>
+
+                    <div class="login-options">
+                        <label class="remember-me">
+                            <input type="checkbox" name="remember" id="remember">
+                            <span>Remember me</span>
+                        </label>
+                        <div class="register-link">
+                            New admin? <a href="{{ route('admin.register') }}">Create account</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Password visibility toggle
+    const togglePassword = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('password');
+
+    togglePassword.addEventListener('click', function() {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        this.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' :
+            '<i class="fas fa-eye-slash"></i>';
+    });
+
+    // Form submission handling
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        const loginBtn = document.getElementById('loginBtn');
+        loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing In...';
+        loginBtn.disabled = true;
+
+        // Simulate loading delay for demo
+        setTimeout(() => {
+            loginBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Sign In to Dashboard';
+            loginBtn.disabled = false;
+        }, 2000);
+    });
+
+    // Animation for form elements
+    document.addEventListener('DOMContentLoaded', function() {
+        const formGroups = document.querySelectorAll('.form-group');
+
+        formGroups.forEach((group, index) => {
+            group.style.animationDelay = `${index * 0.15}s`;
+        });
+
+        // Add focus effects
+        const inputs = document.querySelectorAll('.form-control');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.classList.add('focused');
+            });
+
+            input.addEventListener('blur', function() {
+                this.parentElement.classList.remove('focused');
+            });
+        });
+
+        // Auto-focus email field
+        document.getElementById('email').focus();
+    });
+
+    // Add ripple effect to login button
+    document.getElementById('loginBtn').addEventListener('click', function(e) {
+        const btn = this;
+        const ripple = document.createElement('span');
+        const rect = btn.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = x + 'px';
+        ripple.style.top = y + 'px';
+        ripple.classList.add('ripple-effect');
+
+        btn.appendChild(ripple);
+
+        setTimeout(() => {
+            ripple.remove();
+        }, 600);
+    });
+</script>
+
+@endsection

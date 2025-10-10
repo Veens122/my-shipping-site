@@ -2,7 +2,7 @@
        <div class="container">
            <div class="phone">Call Us Now: <a href="#"> +1 (850) 344 0 66 </a></div> -->
    <!-- end phone -->
-   <!-- <div class="email"> Email: <a href="#">sales@qesco.co.uk</a> </div> -->
+   <!-- <div class="email"> Email: <a href="#">sales@PaxRuta.co.uk</a> </div> -->
    <!-- end email -->
    <!-- <div class="social-media"> <span>Follow us</span>
                <ul>

@@ -12,7 +12,9 @@ class ShipmentUpdate extends Model
         'shipment_id',
         'location',
         'status',
-        'description'
+        'description',
+        'latitude',
+        'longitude',
     ];
 
     public function shipment()

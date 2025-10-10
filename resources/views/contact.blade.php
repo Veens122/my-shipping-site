@@ -14,9 +14,9 @@
         <div class="row justify-content-center">
             <div class="col-12">
                 <div class="section-title">
-                    <figure><img src="{{ asset('assets/images/section-title-shape') }}.png" alt="Image"></figure>
+                    <figure><img src="{{ asset('assets/images/paxRuta logo') }}.png" alt="Image"></figure>
                     <h2>We’d love to hear from you</h2>
-                    <p>Please send your enquiry to <u>fatestedelivery@yahoo.com</u>, or contact your local<br>
+                    <p>Please send your enquiry to <u>paxrutainfo@gmail.com</u>, or contact your local<br>
                         specialists using the contact details below.</p>
                 </div>
                 <!-- end section-title -->
@@ -26,9 +26,9 @@
                 <div class="contact-box">
                     <h5>Australia Office</h5>
                     <address>
-                        My house 15 here in Awka, Anambra State<br>
-                        Phone: +1 562563285<br>
-                        Email: <a href="mailto:fatestedelivery@yahoo.com">fatestedelivery@yahoo.com</a>
+                        Burwood Road, Burwood, Australia<br>
+                        <!-- Phone: <br> -->
+                        Email: <a href="mailto:paxrutainfo@gmail.com">paxrutainfo@gmail.com</a>
                     </address>
                     <!-- <a href="https://www.google.com/maps/search/?api=1&amp;query=centurylink+field" data-fancybox=""
                         data-width="640" data-height="360" class="custom-button">FIND US ON MAP</a> -->
@@ -41,8 +41,9 @@
                     <h5>Branch Offices</h5>
                     <address>
                         We have offices in different parts of the world<br>
-                        Phone: +1 562563285<br>
-                        Email: <a href="mailto:fatestedelivery@yahoo.com">fatestedelivery@yahoo.com</a>
+                        Email: <a href="paxrutainfo@gmail.com">paxrutainfo@gmail.com</a><br>
+                        Just send an email to the email address above to get every information about our shipping and
+                        delivery.
                     </address>
                     <!-- <a href="https://www.google.com/maps/search/?api=1&amp;query=centurylink+field"
                         data-fancybox="" data-width="640" data-height="360" class="custom-button">FIND US ON MAP</a> -->

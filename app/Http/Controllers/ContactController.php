@@ -26,7 +26,7 @@ class ContactController extends Controller
         ]);
 
         try {
-            Mail::to('veenstechsolutions@gmail.com')->send(new RequestFormMail($data));
+            Mail::to('paxrutainfo@gmail.com')->send(new RequestFormMail($data));
 
             return back()->with('success', 'Your request has been submitted successfully.');
         } catch (TransportExceptionInterface $e) {

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <!-- end navbar -->
-<header class="slider mt-4">
+<header class="slider mt-5">
     <div class="main-slider">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
@@ -12,7 +12,7 @@
                         Logistics</h1>
                     <p>Take the complexity out of customs Freight Solutions <br>
                         with customs brokerage services</p>
-                    <a href="#">COURIER SERVICE</a>
+                    <a href="{{ route('services')}}">COURIER SERVICE</a>
                 </div>
                 <!-- end container -->
             </div>
@@ -25,7 +25,7 @@
                         Delivery</h1>
                     <p>Take the complexity out of customs Freight Solutions <br>
                         with customs brokerage services</p>
-                    <a href="#">DISCOVER ALL</a>
+                    <a href="{{ route('services')}}">DISCOVER ALL</a>
                 </div>
                 <!-- end container -->
             </div>
@@ -38,7 +38,7 @@
                         Trustable</h1>
                     <p>Take the complexity out of customs Freight Solutions <br>
                         with customs brokerage services</p>
-                    <a href="#">MORE ABOUT US</a>
+                    <a href="{{ route('about')}}">MORE ABOUT US</a>
                 </div>
                 <!-- end container -->
             </div>
@@ -70,7 +70,7 @@
 <!-- end slider -->
 <div class="section-note">
     <div class="container">
-        <h6>Barcodes, Inc. <strong>Logistics Facilities</strong> & Technical Support to Continue Operations as
+        <h6> <strong>PaxRuta Logistics Facilities</strong> & Technical Support to Continue Operations as
             Essential Services</h6>
     </div>
     <!-- end container -->
@@ -89,7 +89,7 @@
                 <form action="{{ route('shipments.track-shipment') }}" method="POST">
                     @csrf
                     <div class="track-shipping-form">
-                        <div class="inner">
+                        <div class="inner" id="track-order">
                             <h3>Track your shipment</h3>
                             <div class="form-group half">
                                 <input type="radio" checked name="tracking_number">
@@ -121,11 +121,11 @@
                     <h2>Worldwide Logistics,
                         Air Freight Forwarding,
                         Road Haulage.</h2>
-                    <p>Qesco Logistics is a leading third party contract logistics company
-                        based in the Midlands, United Kingdom. We specialise in providing
+                    <p>PaxRuta Logistics is a leading third party contract logistics company
+                        based in the Midlands, Australia. We specialise in providing
                         supply-chain warehousing and transport services throughout the
-                        UK, Ireland and Continental Europe.</p>
-                    <a href="#" class="custom-button">Discover All Solutions</a>
+                        Australia and Worldwide.</p>
+                    <a href="{{ route('services')}}" class="custom-button">Discover All Solutions</a>
                 </div>
                 <!-- end side-content -->
             </div>
@@ -201,7 +201,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="section-title">
-                    <figure><img src="{{ asset('assets/images/section-title-shape.png') }}" alt="Image"></figure>
+                    <!-- <figure><img src="{{ asset('assets/images/paxruta logo.png') }}" alt="Image"></figure> -->
                     <h2>Global supply chain solutions</h2>
                     <p>Dedicated specialists taking care of your products</p>
                 </div>
@@ -213,7 +213,7 @@
                     <figure><img src="{{ asset('assets/images/solution-image01.jpg') }}" alt="Image">
                         <figcaption> <small>Solutions</small>
                             <h6>Food & Beverage</h6>
-                            <a href="#">Discover More</a>
+                            <a href="{{ route('services')}}">Discover More</a>
                         </figcaption>
                     </figure>
                 </div>
@@ -225,7 +225,7 @@
                     <figure><img src="{{ asset('assets/images/solution-image02.jpg') }}" alt="Image">
                         <figcaption> <small>Solutions</small>
                             <h6>Global 4PL</h6>
-                            <a href="#">Discover More</a>
+                            <a href="{{ route('services')}}">Discover More</a>
                         </figcaption>
                     </figure>
                 </div>
@@ -237,7 +237,7 @@
                     <figure><img src="{{ asset('assets/images/solution-image03.jpg') }}" alt="Image">
                         <figcaption> <small>Solutions</small>
                             <h6>Consumer Packaged Goods</h6>
-                            <a href="#">Discover More</a>
+                            <a href="{{ route('services')}}">Discover More</a>
                         </figcaption>
                     </figure>
                 </div>
@@ -249,7 +249,7 @@
                     <figure><img src="{{ asset('assets/images/solution-image04.jpg') }}" alt="Image">
                         <figcaption> <small>Solutions</small>
                             <h6>Transportation</h6>
-                            <a href="#">Discover More</a>
+                            <a href="{{ route('services')}}">Discover More</a>
                         </figcaption>
                     </figure>
                 </div>
@@ -261,7 +261,7 @@
                     <figure><img src="{{ asset('assets/images/solution-image05.jpg') }}" alt="Image">
                         <figcaption> <small>Solutions</small>
                             <h6>Retails</h6>
-                            <a href="#">Discover More</a>
+                            <a href="{{ route('services')}}">Discover More</a>
                         </figcaption>
                     </figure>
                 </div>
@@ -269,7 +269,7 @@
             </div>
             <!-- end col-3 -->
             <div class="col-lg-2">
-                <div class="solution-button"> <a href="#"><i class="lni lni-chevron-right"></i></a>
+                <div class="solution-button"> <a href="{{ route('services')}}"><i class="lni lni-chevron-right"></i></a>
                     <small>DISCOVER<br>
                         ALL SOLUTIONS</small>
                 </div>
@@ -291,12 +291,12 @@
                     <h2>Quality delivered <br>
                         as standard </h2>
                     <ul>
-                        <li><a href="#">Forwarding <i class="lni lni-chevron-right"></i></a></li>
-                        <li><a href="#">Supply Chain <i class="lni lni-chevron-right"></i></a></li>
-                        <li><a href="#">Outsourcing <i class="lni lni-chevron-right"></i></a></li>
-                        <li><a href="#">Technology <i class="lni lni-chevron-right"></i></a></li>
+                        <li><a href="{{ route('services')}}">Forwarding <i class="lni lni-chevron-right"></i></a></li>
+                        <li><a href="{{ route('services')}}">Supply Chain <i class="lni lni-chevron-right"></i></a></li>
+                        <li><a href="{{ route('services')}}">Outsourcing <i class="lni lni-chevron-right"></i></a></li>
+                        <li><a href="{{ route('services')}}">Technology <i class="lni lni-chevron-right"></i></a></li>
                     </ul>
-                    <a href="#" class="custom-link">View All Services</a>
+                    <a href="{{ route('services')}}" class="custom-link">View All Services</a>
                 </div>
                 <!-- end side-services -->
             </div>
@@ -327,7 +327,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-3 col-md-6">
                 <div class="counter-box"> <span class="odometer" data-count="175" data-status="yes">0</span>
-                    <h6>UK operating centres</h6>
+                    <h6>Operating centeres worldwide</h6>
                 </div>
                 <!-- end counter-box -->
             </div>
@@ -341,7 +341,7 @@
             </div>
             <!-- end col-3 -->
             <div class="col-lg-3 col-md-6">
-                <div class="counter-box"> <span class="odometer" data-count="50" data-status="yes">0</span><span
+                <div class="counter-box"> <span class="odometer" data-count="62" data-status="yes">0</span><span
                         class="symbol">K</span>
                     <h6>Logistics
                         Professionals</h6>
@@ -350,7 +350,7 @@
             </div>
             <!-- end col-3 -->
             <div class="col-lg-3 col-md-6">
-                <div class="counter-box"> <span class="odometer" data-count="450" data-status="yes">0</span><span
+                <div class="counter-box"> <span class="odometer" data-count="150" data-status="yes">0</span><span
                         class="symbol">K</span>
                     <h6>containers of freight</h6>
                 </div>
@@ -358,7 +358,7 @@
             </div>
             <!-- end col-3 -->
             <div class="col-lg-3 col-md-6">
-                <div class="counter-box"> <span class="odometer" data-count="35" data-status="yes">0</span><span
+                <div class="counter-box"> <span class="odometer" data-count="29" data-status="yes">0</span><span
                         class="symbol">K</span>
                     <h6>Project delivery
                         vehicles</h6>
@@ -367,7 +367,7 @@
             </div>
             <!-- end col-3 -->
             <div class="col-lg-3 col-md-6">
-                <div class="counter-box"> <span class="odometer" data-count="20" data-status="yes">0</span><span
+                <div class="counter-box"> <span class="odometer" data-count="15" data-status="yes">0</span><span
                         class="symbol">K</span>
                     <h6>sq.ft of
                         warehousing</h6>
@@ -388,9 +388,9 @@
                 <div class="cta-bar">
                     <h2>We are now Logistics <br>
                         Industry Limited</h2>
-                    <p>We’re one of the UK’s leading shipping and logistics providers.</p>
-                    <a href="#" class="custom-button">Get A Quote</a> <a href="#" class="light-button">Estimate
-                        cost</a>
+                    <p>We’re one of the Australia leading shipping and logistics providers.</p>
+                    <!-- <a href="#" class="custom-button">Get A Quote</a> <a href="#" class="light-button">Estimate
+                        cost</a> -->
                 </div>
                 <!-- end cta-bar -->
             </div>
@@ -401,228 +401,8 @@
     <!-- end container -->
 </section>
 <!-- end content-section -->
-<section class="content-section no-bottom-spacing bottom-bg-half">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="section-title text-left">
-                    <h6>TOTAL DELIVERY COST</h6>
-                    <h2>Find out the approximate cost of <br>
-                        delivery of your shipments</h2>
-                </div>
-                <!-- end section-title -->
-            </div>
-            <!-- end col-12 -->
-            <div class="col-12">
-                <div class="calculator">
-                    <div class="row inner">
-                        <div class="form-group col-md-6"> <span>Distance</span>
-                            <select>
-                                <option>Please select</option>
-                            </select>
-                        </div>
-                        <!-- end form-group -->
-                        <div class="form-group col-md-6"> <span>Destination</span>
-                            <input type="text">
-                        </div>
-                        <!-- end form-group -->
-                        <div class="form-group col-lg-3 col-md-6"> <span>Width</span>
-                            <input type="text">
-                        </div>
-                        <!-- end form-group -->
-                        <div class="form-group col-lg-3 col-md-6"> <span>Height</span>
-                            <input type="text">
-                        </div>
-                        <!-- end form-group -->
-                        <div class="form-group col-lg-3 col-md-6"> <span>Weight</span>
-                            <input type="text">
-                        </div>
-                        <!-- end form-group -->
-                        <div class="form-group col-lg-3 col-md-6"> <span>Fragile</span>
-                            <div class="yes-no" id="yes-no">
-                                <input type="radio" name="rdo" id="yes" value="15000" checked />
-                                <input type="radio" name="rdo" id="no" value="0" />
-                                <div class="switch">
-                                    <label for="yes">Yes</label>
-                                    <label for="no">No</label>
-                                    <span></span>
-                                </div>
-                            </div>
-                            <!-- end yes-no -->
-                        </div>
-                        <!-- end form-group -->
-                        <div class="form-group col-12">
-                            <label>
-                                <input type="checkbox" checked>
-                                Express Delivery</label>
-                            <label>
-                                <input type="checkbox">
-                                Insurance</label>
-                            <label>
-                                <input type="checkbox">
-                                Packaging</label>
-                        </div>
-                        <!-- end form-group -->
-                        <div class="form-group col-12">
-                            <div class="estimated-price"><b>Estimated Price :</b> <strong>$67.000</strong></div>
-                            <!-- end estimated-price -->
-                        </div>
-                        <!-- end form-group -->
-                    </div>
-                    <!-- end row inner -->
-                </div>
-                <!-- end calculator -->
-            </div>
-            <!-- end col-12 -->
-        </div>
-        <!-- end row -->
-    </div>
-    <!-- end container -->
-</section>
+
 <!-- end content-section -->
-<section class="content-section bg-half">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-5">
-                <div class="testimonials-slider">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="testimonial">
-                                <p>As a first time importer from the Far
-                                    East, the process can be quite daunting.
-                                    John Good has provided exceptional
-                                    service and support right through
-                                    the process.</p>
-                                <h6>Steve Macholnad </h6>
-                                <small>Manager Smart Move LTD</small>
-                            </div>
-                            <!-- end testimonial -->
-                        </div>
-                        <!-- end swiper-slide -->
-                        <div class="swiper-slide">
-                            <div class="testimonial">
-                                <p>As a first time importer from the Far
-                                    East, the process can be quite daunting.
-                                    John Good has provided exceptional
-                                    service and support right through
-                                    the process.</p>
-                                <h6>Joshua Olenik</h6>
-                                <small>Sales Team Acrostishe </small>
-                            </div>
-                            <!-- end testimonial -->
-                        </div>
-                        <!-- end swiper-slide -->
-                        <div class="swiper-slide">
-                            <div class="testimonial">
-                                <p>As a first time importer from the Far
-                                    East, the process can be quite daunting.
-                                    John Good has provided exceptional
-                                    service and support right through
-                                    the process.</p>
-                                <h6>Jack Abraham</h6>
-                                <small>Director of Envato LLC</small>
-                            </div>
-                            <!-- end testimonial -->
-                        </div>
-                        <!-- end swiper-slide -->
-                    </div>
-                    <!-- end swiper-wrapper -->
-                    <div class="swiper-pagination"></div>
-                    <!-- end swiper-pagination -->
-                </div>
-                <!-- end testimonials-slider -->
-            </div>
-            <!-- end col-6 -->
-            <div class="col-lg-6 offset-lg-1">
-                <div class="section-title">
-                    <h2>Trusted By Some
-                        The World's Companies
-                        for over 180 years</h2>
-                </div>
-                <!-- end section-title -->
-                <div class="row inner">
-                    <div class="col-6">
-                        <figure class="logo-item"> <img src="{{ asset('assets/images/logo01.jpg') }}" alt="Image">
-                        </figure>
-                        <!-- end logo-item -->
-                    </div>
-                    <!-- end col-6 -->
-                    <div class="col-6">
-                        <figure class="logo-item"> <img src="{{ asset('assets/images/logo02.jpg') }}" alt="Image">
-                        </figure>
-                        <!-- end logo-item -->
-                    </div>
-                    <!-- end col-6 -->
-                    <div class="col-6">
-                        <figure class="logo-item"> <img src="{{ asset('assets/images/logo03.jpg') }}" alt="Image">
-                        </figure>
-                        <!-- end logo-item -->
-                    </div>
-                    <!-- end col-6 -->
-                    <div class="col-6">
-                        <figure class="logo-item"> <img src="{{ asset('assets/images/logo04.jpg') }}" alt="Image">
-                        </figure>
-                        <!-- end logo-item -->
-                    </div>
-                    <!-- end col-6 -->
-                </div>
-                <!-- end row -->
-            </div>
-            <!-- end col-6 -->
-        </div>
-        <!-- end row -->
-    </div>
-    <!-- end container -->
-</section>
-<!-- end content-section -->
-<section class="content-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <div class="section-title">
-                    <figure><img src="{{ asset('assets/images/section-title-shape.png') }}" alt="Image"></figure>
-                    <h2>Industry insight opinion</h2>
-                    <p>advice and best practice from our own team</p>
-                </div>
-                <!-- end section-title -->
-            </div>
-            <!-- end col-12 -->
-            <div class="col-md-6">
-                <div class="recent-news">
-                    <figure><img src="{{ asset('assets/images/recent-news01.jpg') }}" alt="Image"> <a href="#"><i
-                                class="lni lni-chevron-right"></i></a> </figure>
-                    <div class="content">
-                        <h3><a href="#">Carriers feel affect of COVID-19</a></h3>
-                        <small>May 26th, 2020</small>
-                        <p>As the global pandemic continues to spread in certain parts
-                            of the world, Europe as a whole is pushing to get back</p>
-                        <span><i class="lni lni-comments-alt"></i> 0 Comments</span>
-                    </div>
-                    <!-- end content -->
-                </div>
-                <!-- end recent-news -->
-            </div>
-            <!-- end col-6 -->
-            <div class="col-md-6">
-                <div class="recent-news">
-                    <figure><img src="{{ asset('assets/images/recent-news02.jpg') }}" alt="Image"> <a href="#"><i
-                                class="lni lni-chevron-right"></i></a></figure>
-                    <div class="content">
-                        <h3><a href="#">AEO – What are the advantages</a></h3>
-                        <small>June 2nd, 2020</small>
-                        <p>Following the global pandemic and as businesses look to recovery a review by many into
-                            the</p>
-                        <span><i class="lni lni-comments-alt"></i> 0 Comments</span>
-                    </div>
-                    <!-- end content -->
-                </div>
-                <!-- end recent-news -->
-            </div>
-            <!-- end col-6 -->
-        </div>
-        <!-- end row -->
-    </div>
-    <!-- end container -->
-</section>
+
 
 @endsection

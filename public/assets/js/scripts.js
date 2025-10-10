@@ -396,33 +396,20 @@ successModal.addEventListener("click", function (e) {
 
 // ===== TRACKING-RESULTS PAGE =====
 // Simple JavaScript for demonstration purposes
+
+// ADMIN SIDE BAR TOGGLE
 document.addEventListener("DOMContentLoaded", function () {
+    const menuBtn = document.getElementById("mobile-menu-button");
+    const sidebar = document.getElementById("sidebar");
+    const sidebarClose = document.getElementById("sidebarClose");
+
     // Toggle sidebar on mobile
-    const sidebarToggle = document.querySelector(".sidebar .icon-button");
-    const sidebar = document.querySelector(".sidebar");
+    menuBtn.addEventListener("click", function () {
+        sidebar.classList.toggle("active");
+    });
 
-    if (sidebarToggle) {
-        sidebarToggle.addEventListener("click", function () {
-            sidebar.classList.toggle("open");
-        });
-    }
-
-    // Simulate tracking button click
-    const trackButton = document.querySelector(".btn-primary");
-    if (trackButton) {
-        trackButton.addEventListener("click", function () {
-            alert("Tracking information updated!");
-        });
-    }
-
-    // Recent tags functionality
-    const tags = document.querySelectorAll(".tag");
-    tags.forEach((tag) => {
-        tag.addEventListener("click", function () {
-            const trackingInput = document.querySelector(
-                ".tracking-input input"
-            );
-            trackingInput.value = this.textContent;
-        });
+    // Close sidebar
+    sidebarClose.addEventListener("click", function () {
+        sidebar.classList.remove("active");
     });
 });

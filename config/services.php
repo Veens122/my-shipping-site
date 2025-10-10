@@ -31,4 +31,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'opencage' => [
+        'key' => env('c035752cf02c4239b68010e28f8df4f2'),
+    ],
+
+
 ];

@@ -79,45 +79,7 @@
                 <!-- end pagination -->
             </div>
             <!-- end col-8 -->
-            <div class="col-lg-4">
-                <aside class="sidebar">
-                    <div class="widget">
-                        <h6 class="widget-title">SEARCH</h6>
-                        <form>
-                            <input type="search" placeholder="Type here to search">
-                            <input type="submit" value="Search">
-                        </form>
-                    </div>
-                    <!-- end widget -->
-                    <div class="widget">
-                        <h6 class="widget-title">CATEGORIES</h6>
-                        <ul class="categories">
-                            <li><a href="#">Food & Beverage</a></li>
-                            <li><a href="#">Global 4PL</a></li>
-                            <li><a href="#">Consumer Packageds</a></li>
-                            <li><a href="#">Transportation</a></li>
-                            <li><a href="#">Retails</a></li>
-                            <li><a href="#">Shipping</a></li>
-                            <li><a href="#">Commerce Cargo</a></li>
-                        </ul>
-                    </div>
-                    <!-- end widget -->
 
-                    <div class="widget">
-                        <h6 class="widget-title">GALLERY</h6>
-                        <ul class="side-gallery">
-                            <li><img src="{{ asset('assets/images/gallery-item02.jpg') }}" alt="Image"></li>
-                            <li><img src="{{ asset('assets/images/gallery-item01.jpg') }}" alt="Image"></li>
-                            <li><img src="{{ asset('assets/images/gallery-item03.jpg') }}" alt="Image"></li>
-                            <li><img src="{{ asset('assets/images/gallery-item04.jpg') }}" alt="Image"></li>
-                            <li><img src="{{ asset('assets/images/gallery-item05.jpg') }}" alt="Image"></li>
-                            <li><img src="{{ asset('assets/images/gallery-item01.jpg') }}" alt="Image"></li>
-                        </ul>
-                    </div>
-                    <!-- end widget -->
-                </aside>
-                <!-- end sidebar -->
-            </div>
             <!-- end col-4 -->
         </div>
         <!-- end row -->
