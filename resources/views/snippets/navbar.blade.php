@@ -15,23 +15,12 @@
                 </div> -->
 
                 @auth
-                @php
-                $user = auth()->user();
-
-                // Determine dashboard route by role_id
-                $dashboardRoute = match ($user->role_id) {
-                1 => route('superadmin.dashboard'),
-                2 => route('admin.dashboard'),
-                3 => route('candidate.dashboard'),
-                default => route('home'), // fallback if role_id doesn't match any above
-                };
-                @endphp
-
-                <a href="{{ $dashboardRoute }}"
+                <a href="{{ auth()->user()->dashboardRoute() }}"
                     class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
                     Back to Dashboard
                 </a>
                 @endauth
+
 
                 <!-- end custom-menu -->
                 <div class="site-menu">

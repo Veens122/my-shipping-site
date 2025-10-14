@@ -63,4 +63,14 @@ class User extends Authenticatable
     {
         return $this->banned_until && $this->banned_until->isFuture();
     }
+
+    public function dashboardRoute()
+    {
+        return match (true) {
+            $this->isSuperAdmin() => route('superadmin.dashboard'),
+            $this->isAdmin() => route('admin.dashboard'),
+            $this->role_id === 3 => route('candidate.dashboard'),
+            default => route('home'),
+        };
+    }
 }

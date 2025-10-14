@@ -141,7 +141,7 @@
                 <div class="logo-icon">
                     <i class="fas fa-truck"></i>
                 </div>
-                <span class="brand-text">PaxRuta</span>
+                <a class="text-decoration-none" href="{{ route('home')}}"><span class="brand-text">PaxRuta</span></a>
             </div>
             <button class="toggle-btn" id="toggle-sidebar">
                 <i class="fas fa-chevron-left"></i>
