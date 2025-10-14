@@ -40,12 +40,13 @@
                        <!-- <li><a href="{{ route('blog')}}">News</a></li> -->
                        <li><a href="{{ route('about')}}">About</a></li>
                        <li><a href="{{ route('contact')}}">Contact</a></li>
+                       <li><a href="{{ url('/#track-order') }}">TRACK YOUR ORDER</a></li>
                    </ul>
                </div>
                <!-- end site-menu -->
            </div>
            <!-- end show-mobile -->
-           <small>© 2020 PaxRuta | Logicstic Shipping Company</small>
+           <small>© 2025 PaxRuta | Logicstic Shipping Company</small>
        </div>
        <!-- end inner -->
    </aside>

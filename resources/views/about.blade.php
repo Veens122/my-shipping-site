@@ -12,7 +12,7 @@
 <!-- end page-header -->
 <section class="content-section">
     <div class="section-title">
-        <figure><img src="{{ asset('assets/images/section-title-shape.png') }}" alt="Image"></figure>
+        <figure><img src="{{ asset('assets/images/paxruta logo.png') }}" alt="Image"></figure>
         <h2>Everyone within our business <br>
             understands our mission</h2>
         <p>It means we don’t just come to work to do a job, we come to work to make a difference.</p>
@@ -140,7 +140,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-3 col-md-6">
                 <div class="counter-box"> <span class="odometer" data-count="175" data-status="yes">0</span>
-                    <h6>UK operating centres</h6>
+                    <h6>Australia operating centres</h6>
                 </div>
                 <!-- end counter-box -->
             </div>
@@ -199,8 +199,8 @@
         <div class="row">
             <div class="col-12">
                 <div class="section-title">
-                    <figure><img src="{{ asset('assets/images/section-title-shape.png') }}" alt="Image"></figure>
-                    <h2>PaxRuta UK LLC has grown from <br>
+                    <figure><img src="{{ asset('assets/images/paxruta logo.png') }}" alt="Image"></figure>
+                    <h2>PaxRuta Australia has grown from <br>
                         strength to strength</h2>
                     <p>It means we don’t just come to work to do a job, we come to work to make a difference.</p>
                 </div>
@@ -213,26 +213,26 @@
                             <div class="description">
                                 <h6>ISO ACCREDITATION</h6>
                                 <p>In November 2016 after a lot of work Atlas
-                                    Logistics UK Ltd became ISO 9001 and ISO
+                                    Logistics Australia Ltd became ISO 9001 and ISO
                                     27001 accredited, complying with The
                                     Provision of Import and Export Solutions and
                                     Associated Services. </p>
                             </div>
                             <!-- end description -->
-                            <small class="date">11-23-2016</small>
+                            <small class="date">11-23-2021</small>
                         </div>
                         <!-- end history-box -->
                     </li>
                     <li>
                         <div class="history-box">
                             <div class="description">
-                                <h6>2016 RE BRAND</h6>
+                                <h6>2021 RE BRAND</h6>
                                 <p>New logo, new website, fresh new brand but
                                     still the same reliable team. Follow our blog
                                     article for more information. </p>
                             </div>
                             <!-- end description -->
-                            <small class="date">11-23-2016</small>
+                            <small class="date">12-13-2021</small>
                         </div>
                         <!-- end history-box -->
                     </li>
@@ -240,21 +240,21 @@
                         <div class="history-box">
                             <div class="description">
                                 <h6> LOGISTICS PVT WERE</h6>
-                                <p>In September 2015 the shares of Logistics
-                                    PVT were acquired by the UK Company,
+                                <p>In September 2023 the shares of Logistics
+                                    PVT were acquired by the Australia Company,
                                     meaning Atlas Logistics </p>
                             </div>
                             <!-- end description -->
-                            <small class="date">11-23-2016</small>
+                            <small class="date">12-13-2022</small>
                         </div>
                         <!-- end history-box -->
                     </li>
                     <li>
                         <div class="history-box">
                             <div class="description">
-                                <h6>2013 BOTH OFFICES</h6>
-                                <p>In March 2013 both offices moved to larger
-                                    premises, London being strategically placed
+                                <h6>2023 BOTH OFFICES</h6>
+                                <p>In December 2022 both offices moved to larger
+                                    premises, Burwood being strategically placed
                                     close to Heathrow Airport, and Birmingham
                                     moving to a facility giving the Company
                                     access to 30,000 square feet of Logistics
@@ -268,14 +268,14 @@
                     <li>
                         <div class="history-box">
                             <div class="description">
-                                <h6>2012 PaxRuta UK LTD</h6>
-                                <p>In June 2012 PaxRuta UK Ltd became
-                                    members of the WCA, the world’s largest and
+                                <h6>2024 PaxRuta Australia LTD</h6>
+                                <p>In June 2024 PaxRuta Australia Ltd became
+                                    members of the world’s largest and
                                     most powerful network of independent
                                     freight forwarders, </p>
                             </div>
                             <!-- end description -->
-                            <small class="date">11-23-2016</small>
+                            <small class="date">10-17-2024</small>
                         </div>
                         <!-- end history-box -->
                     </li>
@@ -283,12 +283,12 @@
                         <div class="history-box">
                             <div class="description">
                                 <h6>LOGISTICS BEGAN TRADING</h6>
-                                <p>Logistics UK Ltd began trading in October
-                                    2009 as an independent company, being
+                                <p>Logistics Australia Ltd began trading in October
+                                    2023 as an independent company, being
                                     associated through share ownership </p>
                             </div>
                             <!-- end description -->
-                            <small class="date">11-23-2016</small>
+                            <small class="date">10-23-2023</small>
                         </div>
                         <!-- end history-box -->
                     </li>
@@ -305,15 +305,15 @@
     <div class="tab-content">
         <ul class="tab-nav">
             <li class="active"><a href="#tab01">Postal</a></li>
-            <li><a href="#tab02">Retail</a></li>
-            <li><a href="#tab03">Logistics</a></li>
-            <li><a href="#tab04">Ticketing</a></li>
-            <li><a href="#tab05">Industrial</a></li>
-            <li><a href="#tab06">Other</a></li>
+            <li><a href="">Retail</a></li>
+            <li><a href="">Logistics</a></li>
+            <li><a href="">Ticketing</a></li>
+            <li><a href="">Industrial</a></li>
+            <li><a href="">Other</a></li>
         </ul>
         <div id="tab01" class="tab-item active-item">
             <div class="tab-inner">
-                <figure><img src="{{ asset('assets/images/tab-image01.jpg') }}" alt="Image"></figure>
+                <figure><img src="{{ asset('assets/images/paxruta logo.png') }}" alt="Image"></figure>
                 <div class="content">
                     <h3>Postal</h3>
                     <p>The retail industry is not only shaped by the quality
@@ -430,67 +430,7 @@
     <!-- end tab-content -->
 </section>
 <!-- end content-section -->
-<section class="content-section">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12">
-                <div class="section-title">
-                    <figure><img src="{{ asset('assets/images/section-title-shape.png') }}" alt="Image"></figure>
-                    <h2>Meet our team of experts</h2>
-                    <p>Advice and best practice from our own team</p>
-                </div>
-            </div>
-            <!-- end col-12 -->
-            <div class="col-lg-4 col-md-6">
-                <div class="team-member">
-                    <div class="inner">
-                        <figure> <img src="{{ asset('assets/images/team-member01.jpg') }}" alt="Image"> </figure>
-                        <h6>ALEXANDER RICHIEZ</h6>
-                        <small>Chief Operations Officer</small>
-                        <p>At vero eos et accusamus et
-                            iusto odio dignissimos ducimus
-                            qui blanditiis praesentium</p>
-                    </div>
-                    <!-- end inner -->
-                </div>
-                <!-- end team-member -->
-            </div>
-            <!-- end col-4 -->
-            <div class="col-lg-4 col-md-6">
-                <div class="team-member">
-                    <div class="inner">
-                        <figure> <img src="{{ asset('assets/images/team-member02.jpg') }}" alt="Image"> </figure>
-                        <h6>RICHARD HILL</h6>
-                        <small>Head of Administration</small>
-                        <p>At vero eos et accusamus et
-                            iusto odio dignissimos ducimus
-                            qui blanditiis praesentium</p>
-                    </div>
-                    <!-- end inner -->
-                </div>
-                <!-- end team-member -->
-            </div>
-            <!-- end col-4 -->
-            <div class="col-lg-4 col-md-6">
-                <div class="team-member">
-                    <div class="inner">
-                        <figure> <img src="{{ asset('assets/images/team-member03.jpg') }}" alt="Image"> </figure>
-                        <h6>DYLAN TAYLOR</h6>
-                        <small>Financial Manager</small>
-                        <p>At vero eos et accusamus et
-                            iusto odio dignissimos ducimus
-                            qui blanditiis praesentium</p>
-                    </div>
-                    <!-- end inner -->
-                </div>
-                <!-- end team-member -->
-            </div>
-            <!-- end col-4 -->
-        </div>
-        <!-- end row -->
-    </div>
-    <!-- end container -->
-</section>
+
 <!-- end content-section -->
 <section class="content-section image-bar" data-background="{{ asset('assets/images/section-bg-02.jpg') }}"> </section>
 <!-- end content-section -->
@@ -504,21 +444,19 @@
                         John Good has provided exceptional
                         service and support right through
                         the process.</p>
-                    <h6>Steve Macholnad </h6>
-                    <small>Manager Smart Move LTD</small>
+                    <h6>Smith Taylor </h6>
+                    <small>Manager Phoenix Empire Move LTD</small>
                 </div>
                 <!-- end testimonial -->
             </div>
             <!-- end col-6 -->
             <div class="col-md-6">
                 <div class="testimonial">
-                    <p>As a first time importer from the Far
-                        East, the process can be quite daunting.
-                        John Good has provided exceptional
-                        service and support right through
-                        the process.</p>
-                    <h6>Steve Macholnad </h6>
-                    <small>Manager Smart Move LTD</small>
+                    <p>My experience with PaxRuta Logostics has been the best,
+                        they are fast, reliable and they deliver
+                        as at when due, if you ask me, I would choose PaxRuta always </p>
+                    <h6>Charles Moore </h6>
+                    <small>Manager Duratel LTD</small>
                 </div>
                 <!-- end testimonial -->
             </div>
@@ -534,7 +472,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="section-title">
-                    <figure><img src="{{ asset('assets/images/section-title-shape.png') }}" alt="Image"></figure>
+                    <figure><img src="{{ asset('assets/images/paxruta logo.png') }}" alt="Image"></figure>
                     <h2>Our accreditations </h2>
                     <p>We are committed to delivering professional services of the highest standard</p>
                 </div>
@@ -618,7 +556,7 @@
 <!-- end content-section -->
 <div class="section-note">
     <div class="container">
-        <h6>Barcodes, Inc. <strong>Logistics Facilities</strong> &amp; Technical Support to Continue Operations as
+        <h6>PaxRuta Logistics. <strong>Logistics Facilities</strong> &amp; Technical Support to Continue Operations as
             Essential Services</h6>
     </div>
     <!-- end container -->
