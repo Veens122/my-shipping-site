@@ -58,7 +58,7 @@
 </head>
 
 <body>
-    <!-- <div class="preloader"> <img src="{{ asset('assets/images/paxruta logo.png') }}" alt="Image"> </div> -->
+    <div class="preloader"> <img src="{{ asset('assets/images/paxruta logo.png') }}" alt="Image"> </div>
     <!-- end preloader -->
     <div class="page-transition"></div>
     <!-- end page-transition -->
