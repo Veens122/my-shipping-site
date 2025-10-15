@@ -1,18 +1,10 @@
     <nav class="navbar">
         <div class="container">
             <div class="inner">
-                <div class="logo"> <a href="/"> <img
-                            src="{{ asset('assets/images/paxruta logo.png') }}" alt="Image">
+                <div class="logo"> <a href="/"> <img src="{{ asset('assets/images/paxruta logo.png') }}" alt="Image">
                     </a> </div>
 
 
-                <!-- end logo -->
-                <!-- <div class="custom-menu">
-                    <ul>
-                        <li><a href="#">En</a></li>
-                        <li><a href="#">Ru</a></li>
-                    </ul>
-                </div> -->
 
                 @auth
 
