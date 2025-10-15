@@ -51,12 +51,12 @@ class User extends Authenticatable
 
     public function isSuperAdmin()
     {
-        return $this->role_id === 1;
+        return $this->role_id == 1;
     }
 
     public function isAdmin()
     {
-        return $this->role_id === 2;
+        return $this->role_id == 2;
     }
 
     public function is_Banned()
@@ -69,8 +69,7 @@ class User extends Authenticatable
         return match (true) {
             $this->isSuperAdmin() => route('superadmin.dashboard'),
             $this->isAdmin() => route('admin.dashboard'),
-            $this->role_id === 3 => route('candidate.dashboard'),
-            default => route('home'),
+            default => redirect('/'),
         };
     }
 }

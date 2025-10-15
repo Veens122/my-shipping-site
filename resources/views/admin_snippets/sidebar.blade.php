@@ -5,7 +5,7 @@
                 <div class="logo-icon">
                     <i class="fas fa-truck"></i>
                 </div>
-                <a class="text-decoration-none" href="{{ route('home')}}"><span class="brand-text">PaxRuta</span></a>
+                <a class="text-decoration-none" href="/"><span class="brand-text">PaxRuta</span></a>
 
             </div>
             <button class="toggle-btn" id="toggle-sidebar">

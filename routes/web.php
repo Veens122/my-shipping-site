@@ -45,7 +45,7 @@ Route::get('/blog', function () {
 // =====================
 // Admin 
 // =====================
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+// Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/admin/index', [AdminController::class, 'index'])->name('admin.index');
 
 Route::get('/admin/login', [LoginController::class, 'showLogin'])->name('admin.login');

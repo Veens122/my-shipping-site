@@ -1,6 +1,6 @@
    <aside class="side-widget">
        <div class="inner">
-           <div class="logo"> <a href="{{ route('home')}}"><img src="{{ asset('assets/images/paxruta logo.png') }}"
+           <div class="logo"> <a href="/"><img src="{{ asset('assets/images/paxruta logo.png') }}"
                        alt="Image"></a>
            </div>
            <!-- end logo -->

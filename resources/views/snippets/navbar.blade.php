@@ -1,7 +1,7 @@
     <nav class="navbar">
         <div class="container">
             <div class="inner">
-                <div class="logo"> <a href="{{ route('home')}}"> <img
+                <div class="logo"> <a href="/"> <img
                             src="{{ asset('assets/images/paxruta logo.png') }}" alt="Image">
                     </a> </div>
 
@@ -15,6 +15,7 @@
                 </div> -->
 
                 @auth
+
                 <a href="{{ auth()->user()->dashboardRoute() }}"
                     class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
                     Back to Dashboard

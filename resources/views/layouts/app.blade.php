@@ -58,7 +58,7 @@
 </head>
 
 <body>
-    <div class="preloader"> <img src="{{ asset('assets/images/paxruta logo.png') }}" alt="Image"> </div>
+    <!-- <div class="preloader"> <img src="{{ asset('assets/images/paxruta logo.png') }}" alt="Image"> </div> -->
     <!-- end preloader -->
     <div class="page-transition"></div>
     <!-- end page-transition -->
@@ -99,48 +99,48 @@
     {{-- SweetAlert2 Messages --}}
     @if(Session::has('success'))
     <script>
-        Swal.fire({
-            icon: 'success',
-            title: 'Successful!',
-            html: "{{ Session::get('success') }}",
-            timer: 5000,
-            showConfirmButton: true
-        });
+    Swal.fire({
+        icon: 'success',
+        title: 'Successful!',
+        html: "{{ Session::get('success') }}",
+        timer: 5000,
+        showConfirmButton: true
+    });
     </script>
     @endif
 
     @if(Session::has('error'))
     <script>
-        Swal.fire({
-            icon: 'error',
-            title: 'Error!',
-            text: "{{ Session::get('error') }}",
-            timer: 5000,
-            showConfirmButton: false
-        });
+    Swal.fire({
+        icon: 'error',
+        title: 'Error!',
+        text: "{{ Session::get('error') }}",
+        timer: 5000,
+        showConfirmButton: false
+    });
     </script>
     @endif
 
     @if(Session::has('info'))
     <script>
-        Swal.fire({
-            icon: 'info',
-            title: 'Info',
-            text: "{{ Session::get('info') }}",
-            timer: 5000,
-            showConfirmButton: false
-        });
+    Swal.fire({
+        icon: 'info',
+        title: 'Info',
+        text: "{{ Session::get('info') }}",
+        timer: 5000,
+        showConfirmButton: false
+    });
     </script>
     @endif
 
     @if($errors->any())
     <script>
-        Swal.fire({
-            icon: 'warning',
-            title: 'Validation Errors',
-            html: `{!! implode('<br>', $errors->all()) !!}`,
-            showConfirmButton: true
-        });
+    Swal.fire({
+        icon: 'warning',
+        title: 'Validation Errors',
+        html: `{!! implode('<br>', $errors->all()) !!}`,
+        showConfirmButton: true
+    });
     </script>
     @endif
 

@@ -45,7 +45,7 @@ class LoginController extends Controller
             }
 
             // Default fallback
-            return redirect()->route('home');
+            return redirect('/');
         }
 
         return back()->with('error', 'Invalid login details');
