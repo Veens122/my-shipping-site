@@ -496,7 +496,7 @@ document.addEventListener("DOMContentLoaded", function() {
     observer.observe(mapElement);
 });
 
-const downloadLinks = ['download-receipt', 'download-label'];
+const downloadLinks = ['download-label'];
 downloadLinks.forEach(id => {
     const link = document.getElementById(id);
     if (link) {
