@@ -496,15 +496,30 @@ document.addEventListener("DOMContentLoaded", function() {
     observer.observe(mapElement);
 });
 
-const downloadLinks = ['download-label'];
+
+// auto relaod page after download receipt or label
+const downloadLinks = ['download-receipt', 'download-label'];
+
 downloadLinks.forEach(id => {
     const link = document.getElementById(id);
     if (link) {
-        link.addEventListener('click', function() {
-            setTimeout(() => location.reload(), 2000);
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            // Create hidden iframe to trigger download silently
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.src = this.href;
+            document.body.appendChild(iframe);
+
+            // Reload after 4 seconds (enough for download to start)
+            setTimeout(() => {
+                location.reload();
+            }, 4000);
         });
     }
 });
+
 
 
 // Initialize the map
