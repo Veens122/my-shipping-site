@@ -515,7 +515,7 @@ downloadLinks.forEach(id => {
             // Reload after 4 seconds (enough for download to start)
             setTimeout(() => {
                 location.reload();
-            }, 4000);
+            }, 2000);
         });
     }
 });
