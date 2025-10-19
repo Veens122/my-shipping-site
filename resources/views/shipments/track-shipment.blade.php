@@ -418,16 +418,18 @@
             <div class="info-card p-4 bg-white h-100">
                 <h5 class="mb-4">Need Help?</h5>
                 <div class="utility-links">
-                    <a href="{{ route('shipments.download-receipt', $shipment->id) }}" class="d-block mb-3">
+                    <a href="{{ route('shipments.download-receipt', $shipment->id) }}" id="download-receipt"
+                        class="d-block mb-3">
                         <i class="fas fa-receipt me-2"></i> View Invoice
                     </a>
-                    <a href="{{ route('shipments.label.download', $shipment->id) }}" class="d-block mb-3">
+                    <a href="{{ route('shipments.label.download', $shipment->id) }}" id="download-label"
+                        class="d-block mb-3">
                         <i class="fas fa-edit me-2"></i> View Label
                     </a>
-                    <a href="mailto:paxrutainfo@gmail.com" class="d-block mb-3">
+                    <a href="mailto:support@paxrutalogistics.com" class="d-block mb-3">
                         <i class="fas fa-question-circle me-2"></i> Delivery Help
                     </a>
-                    <a href="mailto:paxrutainfo@gmail.com" class="d-block">
+                    <a href="mailto:support@paxrutalogistics.com" class="d-block">
                         <i class="fas fa-headset me-2"></i> Contact Support
                     </a>
                 </div>
@@ -493,6 +495,17 @@ document.addEventListener("DOMContentLoaded", function() {
     });
     observer.observe(mapElement);
 });
+
+const downloadLinks = ['download-receipt', 'download-label'];
+downloadLinks.forEach(id => {
+    const link = document.getElementById(id);
+    if (link) {
+        link.addEventListener('click', function() {
+            setTimeout(() => location.reload(), 2000);
+        });
+    }
+});
+
 
 // Initialize the map
 function initializeMap() {
@@ -638,6 +651,9 @@ function initializeMap() {
     // Focus on latest update
     const last = updates[updates.length - 1];
     map.setView([last.latitude, last.longitude], 8);
+
+
+
 }
 </script>
 

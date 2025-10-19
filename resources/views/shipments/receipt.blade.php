@@ -230,7 +230,7 @@
             <div class="footer">
                 <div><strong>PaxRuta Logistics</strong></div>
                 <div>Thank you for choosing our services</div>
-                <div>www.paxruta-logistics.com | paxrutainfo@gmail.com</div>
+                <div>www.paxrutalogistics.com | support@paxrutalogistics.com</div>
             </div>
         </div>
     </div>
