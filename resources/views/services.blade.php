@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="section-title">
-                    <figure><img src="{{ asset('assets/images/paxRuta logo.png') }}" alt="Image"></figure>
+                    <!-- <figure><img src="{{ asset('assets/images/paxRuta logo.png') }}" alt="Image"></figure> -->
                     <h2>PaxRuta - The Best Transportation<br>
                         Logistics Since 2020 </h2>
                 </div>

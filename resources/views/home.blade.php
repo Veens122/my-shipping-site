@@ -34,7 +34,7 @@
                 <div class="slide-image" data-background="{{ asset('assets/images/slide03.jpg') }}"></div>
                 <!-- end slide-image -->
                 <div class="container">
-                    <h1>Allways <br>
+                    <h1>Always <br>
                         Trustable</h1>
                     <p>Take the complexity out of customs Freight Solutions <br>
                         with customs brokerage services</p>

@@ -98,7 +98,7 @@ class ShipmentController extends Controller
                 ->setOption('dpi', 96)
                 ->setOption('defaultFont', 'DejaVu Sans')
                 ->setOption('isHtml5ParserEnabled', true)
-                ->setOption('isRemoteEnabled', false)
+                ->setOption('isRemoteEnabled', true)
                 ->setOption('isPhpEnabled', false);
 
             return $pdf->download('shipment-receipt-' . $shipment->tracking_number . '.pdf');
