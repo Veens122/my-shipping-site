@@ -33,7 +33,7 @@
     <link href="ico/apple-touch-icon-114-precomposed.png" rel="apple-touch-icon" sizes="114x114">
     <link href="ico/apple-touch-icon-72-precomposed.png" rel="apple-touch-icon" sizes="72x72">
     <link href="ico/apple-touch-icon-57-precomposed.png" rel="apple-touch-icon">
-    <link href="ico/favicon.png" rel="shortcut icon">
+    <link href="{{ asset('assets/ico/favicon.png') }}" rel="shortcut icon">
 
     <!-- CSS FILES -->
     <link rel="stylesheet" href="{{ asset('assets/css/lineicons.css') }}">
@@ -99,48 +99,48 @@
     {{-- SweetAlert2 Messages --}}
     @if(Session::has('success'))
     <script>
-    Swal.fire({
-        icon: 'success',
-        title: 'Successful!',
-        html: "{{ Session::get('success') }}",
-        timer: 5000,
-        showConfirmButton: true
-    });
+        Swal.fire({
+            icon: 'success',
+            title: 'Successful!',
+            html: "{{ Session::get('success') }}",
+            timer: 5000,
+            showConfirmButton: true
+        });
     </script>
     @endif
 
     @if(Session::has('error'))
     <script>
-    Swal.fire({
-        icon: 'error',
-        title: 'Error!',
-        text: "{{ Session::get('error') }}",
-        timer: 5000,
-        showConfirmButton: false
-    });
+        Swal.fire({
+            icon: 'error',
+            title: 'Error!',
+            text: "{{ Session::get('error') }}",
+            timer: 5000,
+            showConfirmButton: false
+        });
     </script>
     @endif
 
     @if(Session::has('info'))
     <script>
-    Swal.fire({
-        icon: 'info',
-        title: 'Info',
-        text: "{{ Session::get('info') }}",
-        timer: 5000,
-        showConfirmButton: false
-    });
+        Swal.fire({
+            icon: 'info',
+            title: 'Info',
+            text: "{{ Session::get('info') }}",
+            timer: 5000,
+            showConfirmButton: false
+        });
     </script>
     @endif
 
     @if($errors->any())
     <script>
-    Swal.fire({
-        icon: 'warning',
-        title: 'Validation Errors',
-        html: `{!! implode('<br>', $errors->all()) !!}`,
-        showConfirmButton: true
-    });
+        Swal.fire({
+            icon: 'warning',
+            title: 'Validation Errors',
+            html: `{!! implode('<br>', $errors->all()) !!}`,
+            showConfirmButton: true
+        });
     </script>
     @endif
 
