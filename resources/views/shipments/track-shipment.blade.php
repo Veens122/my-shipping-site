@@ -3,12 +3,10 @@
 
 
 <!-- Page Header -->
-<header class="page-header" data-background="{{ asset('assets/images/tracking.jpg') }}">
+<header class="page-header">
     <div class="container">
         <h1>TRACK YOUR ORDER</h1>
-        <!-- <p class="sub-head">Your order has been shipped to your address<br> You will be notified immediately the order
-            arrives your
-            country </p> -->
+
     </div>
     <style>
         :root {
@@ -29,173 +27,175 @@
             padding: 4rem 0;
             text-align: center;
             margin-bottom: 2rem;
-        }
 
-        .page-header h1 {
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
+            background-image: url('../assets/images/tracking.jpg');
 
-        .tracking-card {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            overflow: hidden;
-            margin-bottom: 2rem;
-        }
 
-        .card-header {
-            background-color: var(--light-bg);
-            padding: 1.5rem;
-            border-bottom: 1px solid #eaeaea;
-        }
-
-        .status-badge {
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .progress {
-            height: 8px;
-            border-radius: 4px;
-            margin: 1rem 0;
-        }
-
-        .delivery-estimate {
-            background-color: #f0f7ff;
-            border-top: 1px solid #e1e8f0;
-            border-bottom: 1px solid #e1e8f0;
-        }
-
-        .timeline {
-            position: relative;
-            padding-left: 2rem;
-        }
-
-        .timeline::before {
-            content: "";
-            position: absolute;
-            left: 15px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background-color: #e9ecef;
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 2rem;
-        }
-
-        .timeline-icon {
-            position: absolute;
-            left: -2rem;
-            top: 0;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 0.9rem;
-            transform: translateX(-50%);
-        }
-
-        .timeline-content {
-            padding: 0.5rem 0 0 1.5rem;
-        }
-
-        .info-card {
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-            height: 100%;
-        }
-
-        .utility-links a {
-            color: var(--primary-color);
-            text-decoration: none;
-            padding: 0.5rem 0;
-            transition: all 0.3s;
-            border-bottom: 1px solid #f0f0f0;
-            display: flex;
-            align-items: center;
-        }
-
-        .utility-links a:hover {
-            color: var(--secondary-color);
-            padding-left: 0.5rem;
-        }
-
-        .utility-links a:last-child {
-            border-bottom: none;
-        }
-
-        #map {
-            height: 400px;
-            min-height: 300px;
-            background-color: #e9ecef;
-        }
-
-        .no-map-data {
-            height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-
-        .map-loading {
-            height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        @media (max-width: 768px) {
-            .timeline {
-                padding-left: 1.5rem;
+            .page-header h1 {
+                font-weight: 700;
+                margin-bottom: 1rem;
             }
 
-            .timeline-icon {
-                left: -1.5rem;
+            .tracking-card {
+                background: white;
+                border-radius: 12px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+                overflow: hidden;
+                margin-bottom: 2rem;
             }
 
             .card-header {
-                flex-direction: column;
-                text-align: center;
+                background-color: var(--light-bg);
+                padding: 1.5rem;
+                border-bottom: 1px solid #eaeaea;
             }
 
             .status-badge {
-                margin-top: 1rem;
-                align-self: center;
+                padding: 0.5rem 1rem;
+                border-radius: 50px;
+                font-weight: 600;
+                font-size: 0.9rem;
             }
-        }
 
-        .share-tracking {
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            padding: 1rem;
-            margin-top: 1rem;
-        }
+            .progress {
+                height: 8px;
+                border-radius: 4px;
+                margin: 1rem 0;
+            }
 
-        .copy-btn {
-            cursor: pointer;
-            transition: all 0.3s;
-        }
+            .delivery-estimate {
+                background-color: #f0f7ff;
+                border-top: 1px solid #e1e8f0;
+                border-bottom: 1px solid #e1e8f0;
+            }
 
-        .copy-btn:hover {
-            background-color: #e9ecef;
-        }
+            .timeline {
+                position: relative;
+                padding-left: 2rem;
+            }
 
-        .notification-options {
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            padding: 1rem;
-            margin-top: 1rem;
-        }
+            .timeline::before {
+                content: "";
+                position: absolute;
+                left: 15px;
+                top: 0;
+                bottom: 0;
+                width: 2px;
+                background-color: #e9ecef;
+            }
+
+            .timeline-item {
+                position: relative;
+                margin-bottom: 2rem;
+            }
+
+            .timeline-icon {
+                position: absolute;
+                left: -2rem;
+                top: 0;
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 0.9rem;
+                transform: translateX(-50%);
+            }
+
+            .timeline-content {
+                padding: 0.5rem 0 0 1.5rem;
+            }
+
+            .info-card {
+                border-radius: 10px;
+                box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+                height: 100%;
+            }
+
+            .utility-links a {
+                color: var(--primary-color);
+                text-decoration: none;
+                padding: 0.5rem 0;
+                transition: all 0.3s;
+                border-bottom: 1px solid #f0f0f0;
+                display: flex;
+                align-items: center;
+            }
+
+            .utility-links a:hover {
+                color: var(--secondary-color);
+                padding-left: 0.5rem;
+            }
+
+            .utility-links a:last-child {
+                border-bottom: none;
+            }
+
+            #map {
+                height: 400px;
+                min-height: 300px;
+                background-color: #e9ecef;
+            }
+
+            .no-map-data {
+                height: 300px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+            }
+
+            .map-loading {
+                height: 300px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            @media (max-width: 768px) {
+                .timeline {
+                    padding-left: 1.5rem;
+                }
+
+                .timeline-icon {
+                    left: -1.5rem;
+                }
+
+                .card-header {
+                    flex-direction: column;
+                    text-align: center;
+                }
+
+                .status-badge {
+                    margin-top: 1rem;
+                    align-self: center;
+                }
+            }
+
+            .share-tracking {
+                background-color: #f8f9fa;
+                border-radius: 8px;
+                padding: 1rem;
+                margin-top: 1rem;
+            }
+
+            .copy-btn {
+                cursor: pointer;
+                transition: all 0.3s;
+            }
+
+            .copy-btn:hover {
+                background-color: #e9ecef;
+            }
+
+            .notification-options {
+                background-color: #f8f9fa;
+                border-radius: 8px;
+                padding: 1rem;
+                margin-top: 1rem;
+            }
     </style>
 </header>
 
