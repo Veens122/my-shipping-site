@@ -226,7 +226,7 @@
                 <div><strong>Registered Date:</strong> <span
                         class="registered-date">{{ $shipment->registered_date }}</span>
                 </div>
-                <div><strong>Arrilaval Date:</strong> <span class="arrival-date">{{ $shipment->arrival_date }}</span>
+                <div><strong>Arrival Date:</strong> <span class="arrival-date">{{ $shipment->arrival_date }}</span>
                 </div>
                 <div><strong>Shipping Fee:</strong> <span class="shipping-fee">{{ $shipment->shipping_fee }}</span>
                 </div>

@@ -3,11 +3,12 @@
 
 
 <!-- Page Header -->
-<header class="page-header">
+<header class="page-header" data-background="{{ asset('assets/images/tracking.jpg') }}">
     <div class="container">
         <h1>TRACK YOUR ORDER</h1>
-        <p>Your order has been shipped to your address<br> You will be notified immediately the order arrives your
-            country </p>
+        <!-- <p class="sub-head">Your order has been shipped to your address<br> You will be notified immediately the order
+            arrives your
+            country </p> -->
     </div>
     <style>
         :root {
@@ -18,6 +19,9 @@
             --info-color: #17a2b8;
             --light-bg: #f8f9fa;
         }
+
+
+
 
         .page-header {
             background: linear-gradient(135deg, var(--primary-color) 0%, #34495e 100%);
@@ -240,24 +244,42 @@
                 <div class="col-md-6">
                     <h6 class="mb-1">Estimated Delivery</h6>
                     <p class="mb-0 fw-bold" id="estimated-delivery">
-                        @php
-                        $createdAt = \Carbon\Carbon::parse($shipment->created_at);
-                        $estimatedDate = $createdAt->addDays(3)->format('l, F j, Y');
-                        @endphp
-                        {{ $estimatedDate }}
+                        @if($shipment->arrival_date)
+                        {{ \Carbon\Carbon::parse($shipment->arrival_date)->format('l, F j, Y') }}
+                        @else
+                        N/A
+                        @endif
                     </p>
-                    <small class="text-muted">By end of day</small>
+                    <small class="text-muted">
+                        Note: The package may arrive earlier or later than the estimated date.
+                    </small>
                 </div>
+
+                @php
+                $lastUpdate = $shipment->updates->last();
+                $lastUpdatedDate = $lastUpdate
+                ? ($lastUpdate->update_time ?? $lastUpdate->created_at)
+                : $shipment->created_at;
+                @endphp
+
                 <div class="col-md-6 text-md-end">
                     <h6 class="mb-1">Last Updated</h6>
                     <p class="mb-0" id="last-updated">
-                        @if($shipment->updates->count() > 0)
-                        {{ $shipment->updates->last()->created_at->format('F j, Y \a\t g:i A') }}
-                        @else
-                        {{ $shipment->created_at->format('F j, Y \a\t g:i A') }}
-                        @endif
+                        {{ \Carbon\Carbon::parse($lastUpdatedDate)->format('F j, Y \a\t g:i A') }}
                     </p>
+
+                    @if($shipment->transit_date)
+                    <p>Placed on Transit:
+                        {{ \Carbon\Carbon::parse($shipment->in_transit_date)->format('F j, Y \a\t g:i A') }}
+                    </p>
+                    @endif
+
+                    @if($shipment->delivered_date)
+                    <p>Delivered: {{ \Carbon\Carbon::parse($shipment->delivered_date)->format('F j, Y \a\t g:i A') }}
+                    </p>
+                    @endif
                 </div>
+
             </div>
         </div>
 
@@ -277,18 +299,33 @@
         <!-- Timeline -->
         <div class="p-4">
             <h5 class="mb-4">Tracking History</h5>
+
+            <!-- Status Dates -->
+            @if($shipment->transit_date)
+            <p>Placed on Transit: {{ \Carbon\Carbon::parse($shipment->in_transit_date)->format('F j, Y') }}</p>
+            @endif
+
+            @if($shipment->delivered_date)
+            <p>Delivered: {{ \Carbon\Carbon::parse($shipment->delivered_date)->format('F j, Y') }}</p>
+            @endif
+
+            @if($shipment->received_date)
+            <p>Received: {{ \Carbon\Carbon::parse($shipment->received_date)->format('F j, Y') }}</p>
+            @endif
+
             <div class="timeline" id="timeline">
                 @foreach($shipment->updates as $update)
+                @php
+                // Use admin-set status_date if available, otherwise fallback to created_at
+                $displayDate = $update->status_date ?? $update->created_at;
+                @endphp
                 <div class="timeline-item">
-                    <div class="timeline-icon 
-            @if($loop->first)
-                bg-primary
-            @elseif($update->status == 'Delivered') bg-success
-            @elseif($update->status == 'Out for Delivery') bg-warning
-            @elseif($update->status == 'In Transit') bg-info
-            @else bg-secondary
-            @endif">
-
+                    <div class="timeline-icon
+        @if($loop->first) bg-primary
+        @elseif($update->status == 'Delivered') bg-success
+        @elseif($update->status == 'Out for Delivery') bg-warning
+        @elseif($update->status == 'In Transit') bg-info
+        @else bg-secondary @endif">
                         @if($update->status == 'Delivered')
                         <i class="fas fa-home"></i>
                         @elseif($update->status == 'Out for Delivery')
@@ -300,49 +337,18 @@
                         @endif
                     </div>
                     <div class="timeline-content">
-                        <h6 class="fw-bold mb-1">
-                            {{ $update->status }}
-                            <!-- @if($update->id === $shipment->updates->first()->id)
-                            <span class="badge bg-primary ms-2">Current</span>
-                            @endif -->
-
-                        </h6>
+                        <h6 class="fw-bold mb-1">{{ $update->status }}</h6>
                         <p class="mb-1 text-muted">{{ $update->description }}</p>
                         <small class="text-secondary">
                             {{ $update->location ? $update->location . ' • ' : '' }}
-                            {{ $update->created_at->format('M j, Y \a\t g:i A') }}
+                            {{ \Carbon\Carbon::parse($displayDate)->format('M j, Y \a\t g:i A') }}
                         </small>
                     </div>
                 </div>
-
-                <!-- Order Created -->
-                <p>
-                    <strong>Order Created:</strong>
-                    {{ $shipment->registered_date->format('F j, Y \a\t g:i A') }}
-                </p>
-
-                <!-- Estimated Delivery -->
-                <p>
-                    <strong>Estimated Delivery:</strong>
-                    {{ $shipment->arrival_date->format('l, F j, Y') }}
-                </p>
-
-                <!-- Status Dates -->
-                @if($shipment->transit_date)
-                <p>Placed on Transit: {{ $shipment->transit_date->format('F j, Y') }}</p>
-                @endif
-
-                @if($shipment->delivered_date)
-                <p>Delivered: {{ $shipment->delivered_date->format('F j, Y') }}</p>
-                @endif
-
-                @if($shipment->received_date)
-                <p>Received: {{ $shipment->received_date->format('F j, Y') }}</p>
-                @endif
-
                 @endforeach
 
 
+                <!-- Fallback for shipping label creation -->
                 <div class="timeline-item">
                     <div class="timeline-icon bg-secondary">
                         <i class="fas fa-receipt"></i>
@@ -352,12 +358,15 @@
                         <p class="mb-1 text-muted">Shipping label has been created</p>
                         <small class="text-secondary">
                             {{ $shipment->sender_city }} •
-                            {{ $shipment->created_at->format('M j, Y \a\t g:i A') }}
+                            {{ \Carbon\Carbon::parse($shipment->registered_date)->format('M j, Y \a\t g:i A') }}
                         </small>
                     </div>
                 </div>
             </div>
+
         </div>
+
+
 
         <!-- Map -->
         <div id="map" class="map-loading">
@@ -651,13 +660,17 @@
                 icon: customIcon
             }).addTo(map);
 
+
+            const displayDate = update.status_date || update.created_at;
             const popupContent = `
-            <div class="p-2">
-                <strong>${update.status}</strong><br>
-                ${update.location || ''}<br>
-                <small>${new Date(update.created_at).toLocaleString()}</small>
-            </div>
-        `;
+<div class="p-2">
+    <strong>${update.status}</strong><br>
+    ${update.location || ''}<br>
+    <small>${new Date(displayDate).toLocaleString()}</small>
+</div>
+`;
+
+
             marker.bindPopup(popupContent);
             markers.push(marker);
             polylinePoints.push([lat, lng]);

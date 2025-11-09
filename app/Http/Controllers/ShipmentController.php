@@ -241,13 +241,6 @@ class ShipmentController extends Controller
         return view('shipments.track-shipment', compact('shipment', 'updatesWithCoords'));
     }
 
-
-
-
-
-
-
-
     public function updateShipmentStatus(Request $request, Shipment $shipment)
     {
         $request->validate([
@@ -272,20 +265,92 @@ class ShipmentController extends Controller
     }
 
 
+    // Store Update
     public function storeUpdate(Request $request, $id)
     {
         $request->validate([
             'status'      => 'required|string|max:150',
             'location'    => 'required|string|max:150',
             'description' => 'nullable|string|max:400',
+            'order_received_date'        => 'nullable|date',
+            'handed_to_carrier_date'     => 'nullable|date',
+            'in_transit_date'            => 'nullable|date',
+            'out_for_delivery_date'      => 'nullable|date',
+            'delivered_date'             => 'nullable|date',
         ]);
 
         $shipment = Shipment::findOrFail($id);
 
-        $this->processShipmentUpdate($request, $shipment);
+        // Determine which timestamp to use
+        $statusDateField = match ($request->status) {
+            'Order Received'             => $request->order_received_date,
+            'Package Handed to Carrier'  => $request->handed_to_carrier_date,
+            'In Transit'                 => $request->in_transit_date,
+            'Out for Delivery'           => $request->out_for_delivery_date,
+            'Delivered'                  => $request->delivered_date,
+            default                      => null,
+        };
+
+        $updateTime = $statusDateField ? \Carbon\Carbon::parse($statusDateField) : now();
+
+        $this->processShipmentUpdate($request, $shipment, $updateTime);
 
         return redirect()->back()->with('success', 'Shipment status successfully updated.');
     }
+
+
+    // Proccess Shipment
+    private function processShipmentUpdate(Request $request, Shipment $shipment, $updateTime = null): void
+    {
+        // Determine the update timestamp
+        $updateTime = $updateTime ?? now();
+
+        // Try OpenCage first
+        $coordinates = $this->getCoordinates($request->location);
+
+        // Fallback to Nominatim
+        if (!$coordinates) {
+            $coordinates = $this->geocodeLocation($request->location);
+        }
+
+        // Last fallback: keep the last known coordinates
+        if (!$coordinates) {
+            $coordinates = [
+                'lat' => $shipment->latitude,
+                'lng' => $shipment->longitude,
+            ];
+        }
+
+        // Store in shipment updates
+        $shipment->updates()->create([
+            'status'      => $request->status,
+            'location'    => $request->location,
+            'description' => $request->description,
+            'latitude'    => $coordinates['lat'] ?? null,
+            'longitude'   => $coordinates['lng'] ?? null,
+            'status_date' => $updateTime,
+            'created_at'  => $updateTime,
+            'updated_at'  => $updateTime,
+        ]);
+
+
+        // Prepare main shipment update
+        $shipmentData = [
+            'status'           => $request->status,
+            'current_location' => $request->location,
+            'latitude'         => $coordinates['lat'] ?? null,
+            'longitude'        => $coordinates['lng'] ?? null,
+        ];
+
+        // Map status to shipment date columns
+
+
+        // Update main shipment table
+        $shipment->update($shipmentData);
+    }
+
+
+
 
 
     public function shipmentList(Request $request)
@@ -337,41 +402,6 @@ class ShipmentController extends Controller
         return view('admin.shipments.update-shipment', compact('shipment'));
     }
 
-    private function processShipmentUpdate(Request $request, Shipment $shipment): void
-    {
-        // Try OpenCage first
-        $coordinates = $this->getCoordinates($request->location);
-
-        // Fallback to Nominatim
-        if (!$coordinates) {
-            $coordinates = $this->geocodeLocation($request->location);
-        }
-
-        // Last fallback: keep the last known coordinates (so map still works)
-        if (!$coordinates) {
-            $coordinates = [
-                'lat' => $shipment->latitude,
-                'lng' => $shipment->longitude,
-            ];
-        }
-
-        // Store in shipment updates
-        $shipment->updates()->create([
-            'status'      => $request->status,
-            'location'    => $request->location,
-            'description' => $request->description,
-            'latitude'    => $coordinates['lat'] ?? null,
-            'longitude'   => $coordinates['lng'] ?? null,
-        ]);
-
-        // Update main shipment
-        $shipment->update([
-            'status'           => $request->status,
-            'current_location' => $request->location,
-            'latitude'         => $coordinates['lat'] ?? null,
-            'longitude'        => $coordinates['lng'] ?? null,
-        ]);
-    }
 
 
 

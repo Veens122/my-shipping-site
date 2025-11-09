@@ -27,8 +27,23 @@ class Shipment extends Model
         'current_location',
         'status',
         'user_id',
+        'order_received_date',
+        'handed_to_carrier_date',
+        'in_transit_date',
+        'out_for_delivery_date',
+        'delivered_date',
     ];
 
+    // Cast date fields to Carbon instances
+    protected $casts = [
+        'registered_date'        => 'datetime',
+        'arrival_date'           => 'datetime',
+        'order_received_date'    => 'datetime',
+        'handed_to_carrier_date' => 'datetime',
+        'in_transit_date'        => 'datetime',
+        'out_for_delivery_date'  => 'datetime',
+        'delivered_date'         => 'datetime',
+    ];
 
     public function updates()
     {

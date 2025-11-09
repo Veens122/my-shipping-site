@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ShipmentUpdate extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'shipment_id',
         'location',
@@ -15,6 +16,17 @@ class ShipmentUpdate extends Model
         'description',
         'latitude',
         'longitude',
+        'updated_at',
+        'status_date',
+
+    ];
+
+    // Cast timestamps to Carbon instances
+    protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+        'status_date' => 'datetime',
+
     ];
 
     public function shipment()
