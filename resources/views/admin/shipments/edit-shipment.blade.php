@@ -165,6 +165,41 @@
                         </select>
                     </div>
 
+                    <!-- Registered Date -->
+                    <div class="form-group">
+                        <label class="form-label" for="registeredDate">
+                            Registered Date
+                        </label>
+                        <div class="input-with-icon">
+                            <input type="date" class="form-control" name="registered_date" id="registeredDate"
+                                value="{{ old('registered_date', $shipment->registered_date) }}">
+                        </div>
+                    </div>
+
+                    <!-- Arrival Date -->
+                    <div class="form-group">
+                        <label class="form-label" for="arrivalDate">
+                            Arrival Date
+                        </label>
+                        <div class="input-with-icon">
+                            <input type="date" class="form-control" name="arrival_date" id="arrivalDate"
+                                value="{{ old('arrival_date', $shipment->arrival_date) }}">
+                        </div>
+                    </div>
+
+                    <!-- Shipping Fee -->
+                    <div class="form-group">
+                        <label class="form-label" for="shippingFee">
+                            Shipping Fee
+                        </label>
+                        <div class="input-with-icon">
+                            <input type="number" step="0.01" class="form-control" name="shipping_fee" id="shippingFee"
+                                placeholder="Enter shipping fee"
+                                value="{{ old('shipping_fee', $shipment->shipping_fee) }}">
+                        </div>
+                    </div>
+
+
                     <div class="form-group">
                         <label class="form-label" for="packageWeight">
                             <i class="fas fa-weight-hanging"></i> Weight (kg)
@@ -175,14 +210,14 @@
                             <span class="input-icon">kg</span>
                         </div>
                     </div>
-
+                    <!-- 
                     <div class="form-group">
                         <label class="form-label" for="packageDimensions">
                             <i class="fas fa-ruler-combined"></i> Dimensions (L×W×H in cm)
                         </label>
                         <input type="text" class="form-control" name="dimensions" id="packageDimensions"
                             value="{{ old('dimensions', $shipment->dimensions) }}" placeholder="e.g., 30×20×10">
-                    </div>
+                    </div> -->
 
                     <div class="form-group">
                         <label class="form-label" for="serviceType">
@@ -204,11 +239,11 @@
                     <label class="form-label" for="packageDescription">
                         <i class="fas fa-file-alt"></i> Package Description
                     </label>
-                    <textarea class="form-control" name="description" id="packageDescription" rows="3"
-                        placeholder="Enter package contents and special instructions">{{ old('description', $shipment->description) }}</textarea>
+                    <textarea class="form-control" name="package_description" id="packageDescription" rows="3"
+                        placeholder="Enter package contents and special instructions">{{ old('description', $shipment->package_description) }}</textarea>
                 </div>
 
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label class="form-label" for="insurance">
                         <i class="fas fa-shield-alt"></i> Insurance Value ($)
                     </label>
@@ -217,7 +252,7 @@
                             value="{{ old('insurance_value', $shipment->insurance_value ?? 0) }}">
                         <span class="input-icon">$</span>
                     </div>
-                </div>
+                </div> -->
             </div>
 
             <!-- Form Actions -->

@@ -20,10 +20,15 @@ class Shipment extends Model
         'recipient_address',
         'recipient_city',
         'package_type',
+        'package_description',
+        'registered_date',
+        'arrival_date',
+        'shipping_fee',
         'current_location',
         'status',
-        'user_id'
+        'user_id',
     ];
+
 
     public function updates()
     {

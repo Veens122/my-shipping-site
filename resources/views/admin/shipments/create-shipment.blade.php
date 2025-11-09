@@ -145,6 +145,28 @@
                             </div>
                         </div>
 
+                        <!-- Registered date -->
+                        <div class="col-md-6">
+                            <label class="form-label" for="registeredDate">Registered Date</label>
+                            <input type="date" class="form-control" name="registered_date" id="registeredDate"
+                                placeholder="Input the registration date">
+                        </div>
+
+                        <!-- Arrival Date -->
+                        <div class="col-md-6">
+                            <label class="form-label" for="arrivalDate">Arrival Date</label>
+                            <input type="date" class="form-control" name="arrival_date" id="arrivalDate"
+                                placeholder="Proposed arrival date">
+                        </div>
+
+                        <!-- Shipping Fee -->
+                        <div class="col-md-6">
+                            <label class="form-label" for="shippingFee">Shipping Fee</label>
+                            <input type="number" step="0.01" class="form-control" name="shipping_fee" id="shippingFee"
+                                placeholder="Enter shipping fee">
+                        </div>
+
+
                         <!-- Weight -->
                         <div class="col-md-6">
                             <label class="form-label" for="packageWeight">
@@ -155,7 +177,7 @@
                         </div>
 
                         <!-- Dimensions -->
-                        <div class="col-md-12">
+                        <!-- <div class="col-md-12">
                             <label class="form-label required">
                                 <i class="fas fa-ruler-combined"></i> Dimensions (L×W×H in cm)
                             </label>
@@ -173,7 +195,7 @@
                                         step="0.01">
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <!-- Service Type -->
                         <div class="col-md-12">
@@ -220,18 +242,18 @@
                         <label class="form-label" for="packageDescription">
                             <i class="fas fa-file-alt"></i> Package Description
                         </label>
-                        <textarea class="form-control" name="description" id="packageDescription" rows="3"
+                        <textarea class="form-control" name="package_description" id="packageDescription" rows="3"
                             placeholder="Describe the package contents and any special instructions"></textarea>
                     </div>
 
                     <!-- Insurance -->
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label class="form-label" for="insurance">
                             <i class="fas fa-shield-alt"></i> Insurance Value ($)
                         </label>
                         <input type="number" class="form-control" name="insurance_value" id="insurance" min="0"
                             value="0" placeholder="0">
-                    </div>
+                    </div> -->
 
                     <!-- Initial Location with Lat/Lng -->
                     <div class="form-group">
@@ -258,21 +280,21 @@
 </div>
 
 <script>
-// Auto fetch latitude/longitude for location input
-document.getElementById('initialLocation').addEventListener('blur', function() {
-    let address = this.value;
-    if (address.length > 3) {
-        fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${address}`)
-            .then(res => res.json())
-            .then(data => {
-                if (data.length > 0) {
-                    document.getElementById('latitude').value = data[0].lat;
-                    document.getElementById('longitude').value = data[0].lon;
-                }
-            })
-            .catch(err => console.error(err));
-    }
-});
+    // Auto fetch latitude/longitude for location input
+    document.getElementById('initialLocation').addEventListener('blur', function() {
+        let address = this.value;
+        if (address.length > 3) {
+            fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${address}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.length > 0) {
+                        document.getElementById('latitude').value = data[0].lat;
+                        document.getElementById('longitude').value = data[0].lon;
+                    }
+                })
+                .catch(err => console.error(err));
+        }
+    });
 </script>
 
 @endsection

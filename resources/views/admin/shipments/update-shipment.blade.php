@@ -12,57 +12,25 @@
             <form action="{{ route('shipments.update.store', $shipment->id) }}" method="POST" id="updateForm">
                 @csrf
 
-                <!-- Status Selection -->
-                <div class="mb-3">
-                    <label class="form-label">
-                        <i class="fas fa-tachometer-alt"></i> Status
-                    </label>
-                    <div class="row g-2">
-                        @php
-                        $statuses = [
-                        'Order Received' => 'fas fa-box text-primary',
-                        'Package Handed to Carrier' => 'fas fa-hands text-info',
-                        'In Transit' => 'fas fa-shipping-fast text-warning',
-                        'Out for Delivery' => 'fas fa-truck text-secondary',
-                        'Delivered' => 'fas fa-check-circle text-success'
-                        ];
-                        @endphp
+                <!-- Status Selection, Location, Description ... -->
 
-                        @foreach($statuses as $status => $icon)
-                        <div class="col-md-{{ $status === 'Out for Delivery' || $status === 'Delivered' ? '6' : '4' }}">
-                            <div class="form-check border rounded p-2">
-                                <input class="form-check-input" type="radio" name="status"
-                                    id="status{{ str_replace(' ', '', $status) }}" value="{{ $status }}"
-                                    {{ $shipment->updates->last()?->status === $status ? 'checked' : '' }} required>
-                                <label class="form-check-label w-100" for="status{{ str_replace(' ', '', $status) }}">
-                                    <i class="{{ $icon }} me-2"></i> <span>{{ $status }}</span>
-                                </label>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
+                <!-- Date Inputs -->
+                <div class="form-group">
+                    <label class="form-label" for="transitDate">Transit Date</label>
+                    <input type="date" name="transit_date" id="transitDate" class="form-control"
+                        value="{{ old('transit_date', $shipment->transit_date?->format('Y-m-d')) }}">
                 </div>
 
-                <!-- Location Input -->
                 <div class="form-group">
-                    <label class="form-label" for="location">
-                        <i class="fas fa-map-pin"></i> Location
-                    </label>
-                    <input type="text" name="location" class="form-control" id="location"
-                        placeholder="Enter current location" value="{{ old('location') }}" required>
+                    <label class="form-label" for="deliveredDate">Delivered Date</label>
+                    <input type="date" name="delivered_date" id="deliveredDate" class="form-control"
+                        value="{{ old('delivered_date', $shipment->delivered_date?->format('Y-m-d')) }}">
                 </div>
 
-                <!-- Hidden Latitude & Longitude -->
-                <input type="hidden" name="latitude" id="latitude">
-                <input type="hidden" name="longitude" id="longitude">
-
-                <!-- Description Textarea -->
                 <div class="form-group">
-                    <label class="form-label" for="description">
-                        <i class="fas fa-file-alt"></i> Description
-                    </label>
-                    <textarea name="description" class="form-control" id="description"
-                        placeholder="Enter update details or notes" rows="4">{{ old('description') }}</textarea>
+                    <label class="form-label" for="receivedDate">Received Date</label>
+                    <input type="date" name="received_date" id="receivedDate" class="form-control"
+                        value="{{ old('received_date', $shipment->received_date?->format('Y-m-d')) }}">
                 </div>
 
                 <!-- Form Actions -->
@@ -70,12 +38,12 @@
                     <button type="submit" class="btn-primary-custom">
                         <i class="fas fa-save"></i> Save Update
                     </button>
-
                     <button type="button" class="btn-secondary-custom" onclick="window.history.back();">
                         <i class="fas fa-times"></i> Cancel
                     </button>
                 </div>
             </form>
+
         </div>
     </div>
 
@@ -130,6 +98,8 @@
         </div>
         @endif
     </div>
+
+
 </div>
 
 <script>

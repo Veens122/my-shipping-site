@@ -34,48 +34,119 @@ class ShipmentController extends Controller
 
     public function store(Request $request)
     {
-        $trackingNumber = 'TRK' . time();
-
-        $coords = $this->getCoordinates($request->sender_city);
-
-        $shipment = Shipment::create([
-            'tracking_number'   => $trackingNumber,
-            'user_id'           => auth()->id(),
-            'sender_name'       => $request->sender_name,
-            'sender_phone'      => $request->sender_phone,
-            'sender_address'    => $request->sender_address,
-            'sender_city'       => $request->sender_city,
-            'recipient_name'    => $request->recipient_name,
-            'recipient_phone'   => $request->recipient_phone,
-            'recipient_address' => $request->recipient_address,
-            'recipient_city'    => $request->recipient_city,
-            'package_type'      => $request->package_type,
-            'status'            => 'Registered',
-            'current_location'  => $request->sender_city,
-            'latitude'          => $coords['lat'] ?? null,
-            'longitude'         => $coords['lng'] ?? null,
-
-
+        // Validate incoming data
+        $validated = $request->validate([
+            'sender_name'        => 'required|string|max:255',
+            'sender_phone'       => 'required|string|max:20',
+            'sender_address'     => 'required|string|max:500',
+            'sender_city'        => 'required|string|max:100',
+            'recipient_name'     => 'required|string|max:255',
+            'recipient_phone'    => 'required|string|max:20',
+            'recipient_address'  => 'required|string|max:500',
+            'recipient_city'     => 'required|string|max:100',
+            'package_type'       => 'required|string|max:100',
+            'package_description' => 'nullable|string|max:1000',
+            'registered_date'    => 'required|date',
+            'arrival_date'       => 'required|date|after_or_equal:registered_date',
+            'shipping_fee'       => 'required|numeric|min:0',
         ]);
 
+        // Generate a unique tracking number
+        $trackingNumber = 'TRK' . time();
+
+        // Get coordinates for sender city
+        $coords = $this->getCoordinates($validated['sender_city']);
+
+        // Create shipment record
+        $shipment = Shipment::create([
+            'tracking_number'    => $trackingNumber,
+            'user_id'            => auth()->id(),
+            'sender_name'        => $validated['sender_name'],
+            'sender_phone'       => $validated['sender_phone'],
+            'sender_address'     => $validated['sender_address'],
+            'sender_city'        => $validated['sender_city'],
+            'recipient_name'     => $validated['recipient_name'],
+            'recipient_phone'    => $validated['recipient_phone'],
+            'recipient_address'  => $validated['recipient_address'],
+            'recipient_city'     => $validated['recipient_city'],
+            'package_type'       => $validated['package_type'],
+            'package_description' => $validated['package_description'] ?? null,
+            'registered_date'    => $validated['registered_date'],
+            'arrival_date'       => $validated['arrival_date'],
+            'shipping_fee'       => $validated['shipping_fee'],
+            'status'             => 'Registered',
+            'current_location'   => $validated['sender_city'],
+            'latitude'           => $coords['lat'] ?? null,
+            'longitude'          => $coords['lng'] ?? null,
+        ]);
+
+        // Generate shipment receipt PDF
         $pdf = Pdf::loadView('shipments.receipt', compact('shipment'));
 
+        // Ensure receipts directory exists
         $directory = 'receipts';
         if (!Storage::disk('public')->exists($directory)) {
             Storage::disk('public')->makeDirectory($directory);
         }
+
+        // Save receipt PDF
         $fileName = "{$directory}/receipt_{$shipment->tracking_number}.pdf";
         $pdf->save(storage_path("app/public/{$fileName}"));
 
-        $shipment->receipt_path = $fileName;
-        $shipment->save();
+        // Save file path to database
+        $shipment->update(['receipt_path' => $fileName]);
 
-        return redirect()->route('shipments.shipment-list', $shipment->id)->with([
-            'success' => 'Shipment registered successfully! Receipt generated.',
-            'receiptPreview' => asset('storage/' . $fileName),
-            'downloadUrl' => asset('storage/' . $fileName),
-        ]);
+        // Redirect with success message
+        return redirect()->route('shipments.shipment-list')
+            ->with([
+                'success' => 'Shipment registered successfully! Receipt generated.',
+                'receiptPreview' => asset('storage/' . $fileName),
+                'downloadUrl' => asset('storage/' . $fileName),
+            ]);
     }
+
+
+
+    // Edit Shipment
+    public function editShipment($id)
+    {
+        $shipment = Shipment::findOrFail($id);
+        return view('admin.shipments.edit-shipment', compact('shipment'));
+    }
+
+    // Update Shipment
+    public function updateShipmentEdit(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'sender_name'        => 'required|string|max:255',
+            'sender_phone'       => 'required|string|max:20',
+            'sender_address'     => 'required|string|max:500',
+            'sender_city'        => 'required|string|max:100',
+            'recipient_name'     => 'required|string|max:255',
+            'recipient_phone'    => 'required|string|max:20',
+            'recipient_address'  => 'required|string|max:500',
+            'recipient_city'     => 'required|string|max:100',
+            'package_type'       => 'required|string|max:100',
+            'package_description' => 'nullable|string|max:1000',
+            'registered_date'    => 'required|date',
+            'arrival_date'       => 'required|date|after_or_equal:registered_date',
+            'shipping_fee'       => 'required|numeric|min:0',
+
+            // Optional updates
+            'transit_date'       => $request->transit_date ?? now(),
+            'delivered_date'     => $request->delivered_date ?? now(),
+            'received_date'      => $request->received_date ?? now(),
+        ]);
+
+        $shipment = Shipment::findOrFail($id);
+        $shipment->update($validated);
+
+        return redirect()->route('shipments.shipment-details', $shipment->id)
+            ->with('success', 'Shipment successfully updated.');
+    }
+
+
+
 
     // Delete shipment
     public function destroy($id)
@@ -172,31 +243,6 @@ class ShipmentController extends Controller
 
 
 
-    public function editShipment($id)
-    {
-        $shipment = Shipment::findOrFail($id);
-        return view('admin.shipments.edit-shipment', compact('shipment'));
-    }
-    public function updateShipmentEdit(Request $request, $id)
-    {
-        $validated = $request->validate([
-            'sender_name'       => 'required|string|max:255',
-            'sender_phone'      => 'required|string|max:20',
-            'sender_address'    => 'required|string|max:500',
-            'sender_city'       => 'required|string|max:100',
-            'recipient_name'    => 'required|string|max:255',
-            'recipient_phone'   => 'required|string|max:20',
-            'recipient_address' => 'required|string|max:500',
-            'recipient_city'    => 'required|string|max:100',
-            'package_type'      => 'required|string|max:100',
-        ]);
-
-        $shipment = Shipment::findOrFail($id);
-        $shipment->update($validated);
-
-        return redirect()->route('shipments.shipment-details', $shipment->id)
-            ->with('success', 'Shipment successfully updated.');
-    }
 
 
 
