@@ -5,30 +5,30 @@
     <meta charset="utf-8">
     <title>Shipment Label</title>
     <style>
-    body {
-        font-family: Arial, sans-serif;
-        font-size: 14px;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
 
-    .label-box {
-        border: 2px dashed #000;
-        padding: 20px;
-        width: 400px;
-    }
+        .label-box {
+            border: 2px dashed #000;
+            padding: 20px;
+            width: 400px;
+        }
 
-    h2 {
-        margin-bottom: 10px;
-        text-align: center;
-    }
+        h2 {
+            margin-bottom: 10px;
+            text-align: center;
+        }
 
-    .section {
-        margin-bottom: 10px;
-    }
+        .section {
+            margin-bottom: 10px;
+        }
 
-    .barcode {
-        text-align: center;
-        margin-top: 15px;
-    }
+        .barcode {
+            text-align: center;
+            margin-top: 15px;
+        }
     </style>
 </head>
 
@@ -41,13 +41,11 @@
         <div class="section"><strong>Sender:</strong> {{ $shipment->sender_name }}<br>
             {{ $shipment->sender_address }}<br>
             {{ $shipment->sender_city }}<br>
-            Phone: {{ $shipment->sender_phone }}
         </div>
 
         <div class="section"><strong>Recipient:</strong> {{ $shipment->recipient_name }}<br>
             {{ $shipment->recipient_address }}<br>
             {{ $shipment->recipient_city }}<br>
-            Phone: {{ $shipment->recipient_phone }}
         </div>
 
         <div class="section"><strong>Package Type:</strong> {{ $shipment->package_type }}</div>

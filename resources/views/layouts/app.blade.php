@@ -29,10 +29,7 @@
     <meta name="twitter:image" content="preview.html">
 
     <!-- FAVICON FILES -->
-    <link href="{{ asset('assets/ico/favicon.png') }}" rel="apple-touch-icon" sizes="144x144">
-    <link href="{{ asset('assets/ico/favicon.png') }}" rel="apple-touch-icon" sizes="114x114">
-    <link href="{{ asset('assets/ico/favicon.png') }}" rel="apple-touch-icon" sizes="72x72">
-    <link href="{{ asset('assets/ico/favicon.png') }}" rel="apple-touch-icon">
+
     <link href="{{ asset('assets/ico/favicon.png') }}" rel="shortcut icon">
 
     <!-- CSS FILES -->
