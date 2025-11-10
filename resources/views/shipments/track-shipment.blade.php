@@ -3,8 +3,13 @@
 
 
 <!-- Page Header -->
+<<<<<<< HEAD
 <header class="page-header"
     style="background-image: linear-gradient(135deg, #2c3e50 0%, #34495e 100%), url('{{ asset('assets/images/tracking.jpg') }}'); background-size: cover; background-position: center; color: white; padding: 4rem 0; text-align: center; margin-bottom: 2rem;">
+=======
+<header class="page-header" style="background-image: linear-gradient(135deg, #2c3e50 0%, #34495e 100%), url('{{ asset('assets/images/tracking.jpg') }}'); background-size: cover; background-position: center; color: white; padding: 4rem 0; text-align: center; margin-bottom: 2rem;">
+
+>>>>>>> c322ed8 (Updated track-shipment,blade.php)
     <div class="container">
         <h1>TRACK YOUR ORDER</h1>
 
