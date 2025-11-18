@@ -228,7 +228,7 @@
                 </div>
                 <div><strong>Arrival Date:</strong> <span class="arrival-date">{{ $shipment->arrival_date }}</span>
                 </div>
-                <div><strong>Shipping Fee:</strong> <span class="shipping-fee">{{ $shipment->shipping_fee }}</span>
+                <div><strong>Shipping Fee:</strong> <span class="shipping-fee">${{ $shipment->shipping_fee }}</span>
                 </div>
             </div>
 
